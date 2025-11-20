@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Card 2
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   dataName: 
-  id: 0
+  id: 2
   _cost: 0
   _sprite: {fileID: 0}
-  _description: 
+  _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"

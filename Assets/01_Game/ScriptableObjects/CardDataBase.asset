@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6496dfbf66da6dd49a12203cb7e63810, type: 3}
   m_Name: CardDataBase
   m_EditorClassIdentifier: Assembly-CSharp::CardDataBase
-  dataList: []
+  dataList:
+  - {fileID: 11400000, guid: e74dae2fcde6b1b44bc19e133885ce79, type: 2}
+  - {fileID: 11400000, guid: cbeecc8d9d15aff4496d3b69cdb22a6f, type: 2}
+  - {fileID: 11400000, guid: 00a3d3707963cab46a6f5a2ca3d412c7, type: 2}
+  - {fileID: 11400000, guid: dcf20a448d8999a4f87f1b27fc2ba8b3, type: 2}
+  - {fileID: 11400000, guid: 2ce47bb5814ef7444b3b69208aef7de5, type: 2}
+  - {fileID: 11400000, guid: e4c612ce410af2047afbddf432825f0c, type: 2}
+  - {fileID: 11400000, guid: ea01878cfccf1d047af9c3675cacc037, type: 2}
+  - {fileID: 11400000, guid: 3ace3a07e3dfb9948b175bc2886536aa, type: 2}
+  - {fileID: 11400000, guid: 671ac14e2cbb05046bf6553c891cada7, type: 2}
+  - {fileID: 11400000, guid: 17f6f571ad4956a4db74793de50284d6, type: 2}
