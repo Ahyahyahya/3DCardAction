@@ -3,12 +3,16 @@ using System.Linq;
 using UnityEngine;
 using ObservableCollections;
 using UnityEngine.InputSystem;
+using Cysharp.Threading.Tasks;
+using R3;
 
 public class CardHolder : MonoBehaviour
 {
     // ---------- Field
     // 手札の枚数上限
     private const int _handCount = 3;
+
+    private CardDataStore _cardDataStore;
 
     // 手札(IDでカードを識別する)
     private ObservableFixedSizeRingBuffer<int> _hand = new(_handCount);
@@ -27,6 +31,11 @@ public class CardHolder : MonoBehaviour
     public ObservableList<int> AllCards => _allCards;
 
     // ---------- UnityMessage
+    private void Awake()
+    {
+        _cardDataStore = FindAnyObjectByType<CardDataStore>();
+
+    }
     private void Start()
     {
         // デッキをシャッフル
@@ -41,6 +50,32 @@ public class CardHolder : MonoBehaviour
             // カードを引く
             DrawCard(i);
         }
+
+        var inputer = GetComponent<PlayerInputer>();
+
+        inputer.Hand1Button
+            .Where(input => input == true)
+            .Subscribe(_ =>
+            {
+                PlayCard(1);
+            })
+            .AddTo(gameObject);
+
+        inputer.Hand2Button
+            .Where(input => input == true)
+            .Subscribe(_ =>
+            {
+                PlayCard(2);
+            })
+            .AddTo(gameObject);
+
+        inputer.Hand3Button
+            .Where(input => input == true)
+            .Subscribe(_ =>
+            {
+                PlayCard(3);
+            })
+            .AddTo(gameObject);
     }
 
     // ---------- Method
@@ -91,7 +126,6 @@ public class CardHolder : MonoBehaviour
         {
             ShuffleCardsIntoDeck(_trash);
         }
-
         Debug.Log($"[CardHolder] 残り山札: {_deck.Count}");
     }
 
@@ -101,7 +135,9 @@ public class CardHolder : MonoBehaviour
     /// <param name="handIndex">発動する手札の要素番号</param>
     private void PlayCard(int handIndex)
     {
-        Debug.Log($"[CardHolder] {_hand[handIndex]} を発動！");
+        var targetCard = _cardDataStore.FindWithId(_hand[handIndex]);
+
+        Debug.Log($"[CardHolder] {targetCard.DataName + targetCard.Id} を発動！");
 
         // 発動したカードを墓地へ
         _trash.Add(_hand[handIndex]);
