@@ -13,7 +13,7 @@ public class BaseDataStore<T, U> : MonoBehaviour where T : BaseDataBase<U> where
         return dataBase.DataList.Find(e => e.DataName == name);
     }
 
-    public U FindWithName(int id)
+    public U FindWithId(int id)
     {
         return dataBase.DataList.Find(e => e.Id == id);
     }
