@@ -5,6 +5,9 @@ using ObservableCollections;
 using UnityEngine.InputSystem;
 using Cysharp.Threading.Tasks;
 using R3;
+using R3.Triggers;
+using System;
+using Random = UnityEngine.Random;
 
 public class CardHolder : MonoBehaviour
 {
@@ -13,6 +16,14 @@ public class CardHolder : MonoBehaviour
     private const int _handCount = 3;
 
     private CardDataStore _cardDataStore;
+
+    // カードを発動するためのエネルギー
+    private ReactiveProperty<int> _currentEnergy = new();
+    public ReadOnlyReactiveProperty<int> CurrentEnergy => _currentEnergy;
+
+    private float _energyRecoverySec = 1f;
+
+    private int _energyMax = 5;
 
     // 手札(IDでカードを識別する)
     private ObservableFixedSizeRingBuffer<int> _hand = new(_handCount);
@@ -76,6 +87,15 @@ public class CardHolder : MonoBehaviour
                 PlayCard(3);
             })
             .AddTo(gameObject);
+
+        this.UpdateAsObservable()
+            .Skip(1)
+            .ThrottleFirst(TimeSpan.FromSeconds(_energyRecoverySec))
+            .Where(_ => _currentEnergy.Value < _energyMax)
+            .Subscribe(_ =>
+            {
+                _currentEnergy.Value++;
+            });
     }
 
     // ---------- Method
@@ -135,9 +155,20 @@ public class CardHolder : MonoBehaviour
     /// <param name="handIndex">発動する手札の要素番号</param>
     private void PlayCard(int handIndex)
     {
+        // 使ったカードのデータを取得
         var targetCard = _cardDataStore.FindWithId(_hand[handIndex]);
 
+        if (_currentEnergy.Value < targetCard.Cost)
+        {
+            Debug.Log("[CardHolder] エネルギーが足りない！");
+            return;
+        }
+
+        // 効果発動
         Debug.Log($"[CardHolder] {targetCard.DataName + targetCard.Id} を発動！");
+
+        // 使ったカードのコスト分エネルギーを減らす
+        _currentEnergy.Value -= targetCard.Cost;
 
         // 発動したカードを墓地へ
         _trash.Add(_hand[handIndex]);
