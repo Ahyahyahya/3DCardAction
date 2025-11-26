@@ -45,7 +45,6 @@ public class CardHolder : MonoBehaviour
     private void Awake()
     {
         _cardDataStore = FindAnyObjectByType<CardDataStore>();
-
     }
     private void Start()
     {
@@ -68,7 +67,7 @@ public class CardHolder : MonoBehaviour
             .Where(input => input == true)
             .Subscribe(_ =>
             {
-                PlayCard(1);
+                PlayCard(0);
             })
             .AddTo(gameObject);
 
@@ -76,7 +75,7 @@ public class CardHolder : MonoBehaviour
             .Where(input => input == true)
             .Subscribe(_ =>
             {
-                PlayCard(2);
+                PlayCard(1);
             })
             .AddTo(gameObject);
 
@@ -84,7 +83,7 @@ public class CardHolder : MonoBehaviour
             .Where(input => input == true)
             .Subscribe(_ =>
             {
-                PlayCard(3);
+                PlayCard(2);
             })
             .AddTo(gameObject);
 
