@@ -1,3 +1,4 @@
+using ObservableCollections;
 using R3;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class PlayerDataProvider : MonoBehaviour
 
     // ---------- Property
     public ReadOnlyReactiveProperty<int> CurrentEnergy => _cardHolder.CurrentEnergy;
+    public ObservableFixedSizeRingBuffer<int> Hand => _cardHolder.Hand;
 
     // ---------- UnityMessage
     private void Awake()
