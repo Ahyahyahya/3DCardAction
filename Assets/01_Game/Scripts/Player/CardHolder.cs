@@ -166,6 +166,8 @@ public class CardHolder : MonoBehaviour
         // 効果発動
         Debug.Log($"[CardHolder] {targetCard.DataName + targetCard.Id} を発動！");
 
+        targetCard.Activate();
+
         // 使ったカードのコスト分エネルギーを減らす
         _currentEnergy.Value -= targetCard.Cost;
 
