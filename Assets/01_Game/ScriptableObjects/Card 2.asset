@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   dataName: 
   id: 2
+  _cardEffect: {fileID: -7007424218532842961, guid: 89cc2d29a5287cd4bb8200fa23d358f8, type: 3}
   _cost: 3
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
