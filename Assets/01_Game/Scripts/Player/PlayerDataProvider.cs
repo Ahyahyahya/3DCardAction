@@ -8,9 +8,12 @@ public class PlayerDataProvider : MonoBehaviour
     public static PlayerDataProvider Instance;
 
     // ---------- Field
+    [SerializeField] private PlayerCore _core;
     [SerializeField] private CardHolder _cardHolder;
 
     // ---------- Property
+    public ReadOnlyReactiveProperty<int> Hp => _core.Hp;
+    public ReadOnlyReactiveProperty<int> MaxHp => _core.MaxHp;
     public ReadOnlyReactiveProperty<int> CurrentEnergy => _cardHolder.CurrentEnergy;
     public ObservableFixedSizeRingBuffer<int> Hand => _cardHolder.Hand;
 
