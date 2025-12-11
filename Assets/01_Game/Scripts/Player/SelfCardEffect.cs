@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SelfCardEffect : BaseCardEffect
 {
-    public override void ActivateCardEffect()
+    public override void ActivateCardEffect(CardData cardData)
     {
         Destroy(gameObject, 3f);
     }

@@ -6,6 +6,8 @@ public class BaseDataStore<T, U> : MonoBehaviour where T : BaseDataBase<U> where
 
     protected T DataBase => dataBase;
 
+    public int GetCount => dataBase.DataList.Count;
+
     public U FindWithName(string name)
     {
         if (string.IsNullOrEmpty(name)) return default;

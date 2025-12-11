@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
   m_Name: Card 1
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
+  dataName: Magic Rain
   id: 1
-  _cardEffect: {fileID: 5398255392447052646, guid: 6abc5f39b1e740f4f93b7df494c55cdb, type: 3}
+  _cardEffect: {fileID: 4706040652596043627, guid: 0714a339bc02852478d70f269b6729a3, type: 3}
+  _atk: 8
   _cost: 2
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"

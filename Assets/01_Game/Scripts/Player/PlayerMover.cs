@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using R3;
-using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class PlayerMover : MonoBehaviour
 {
@@ -10,8 +9,10 @@ public class PlayerMover : MonoBehaviour
     {
         var inputer = GetComponent<PlayerInputer>();
         var rb = GetComponent<Rigidbody>();
+        var gm = GameManager.Instance;
 
         inputer.MoveButton
+            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .Subscribe(input =>
             {
                 Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;

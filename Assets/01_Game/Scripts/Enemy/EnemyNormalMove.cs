@@ -11,7 +11,10 @@ public class EnemyNormalMove : MonoBehaviour
     {
         var playerTr = PlayerDataProvider.Instance.transform;
 
+        var gm = GameManager.Instance;
+
         this.UpdateAsObservable()
+            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .Subscribe(_ =>
             {
                 // ƒvƒŒƒCƒ„[‚ð’Ç‚¤

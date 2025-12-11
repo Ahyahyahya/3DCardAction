@@ -3,9 +3,8 @@ using ObservableCollections;
 using R3;
 using TMPro;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
-public class GamePresenter : MonoBehaviour
+public class GamePresenter : BasePresenter
 {
     // ---------- View
     [SerializeField] private SliderAnimation _hpSlider;
@@ -13,8 +12,10 @@ public class GamePresenter : MonoBehaviour
     [SerializeField] private CardView[] _cards = new CardView[3];
 
     // ---------- UnityMessage
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         // Model
         var playerDatas = PlayerDataProvider.Instance;
         var cardDataStore = FindAnyObjectByType<CardDataStore>();

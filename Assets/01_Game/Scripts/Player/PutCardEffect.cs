@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class PutCardEffect : BaseCardEffect
 {
-    private List<GameObject> _withinTargets = new();
-    public override void ActivateCardEffect()
+    [SerializeField] private float _lifeTime = 1.0f;
+
+    private List<IDamageble> _withinTargets = new();
+    public override void ActivateCardEffect(CardData cardData)
     {
         var camera = Camera.main;
 
@@ -28,18 +30,20 @@ public class PutCardEffect : BaseCardEffect
         this.OnTriggerEnterAsObservable()
             .Subscribe(collider =>
             {
-                if (!collider.CompareTag("Enemy")) return;
+                if (!collider.TryGetComponent<IDamageble>(out var damageble)) return;
 
-                _withinTargets.Add(collider.gameObject);
+                if (collider.gameObject == PlayerDataProvider.Instance.gameObject) return;
+
+                _withinTargets.Add(damageble);
             })
             .AddTo(gameObject);
 
         this.OnTriggerExitAsObservable()
             .Subscribe(collider =>
             {
-                if (!collider.CompareTag("Enemy")) return;
+                if (!collider.TryGetComponent<IDamageble>(out var damageble)) return;
 
-                _withinTargets.Remove(collider.gameObject);
+                _withinTargets.Remove(damageble);
             })
             .AddTo(gameObject);
 
@@ -49,13 +53,17 @@ public class PutCardEffect : BaseCardEffect
             {
                 foreach (var target in _withinTargets)
                 {
-                    Debug.Log(target.name + "にダメージを与えた");
+                    if (target == null) continue;
+
+                    target.TakeDamage(cardData.Atk);
+
+                    Debug.Log(cardData.Atk + "ダメージを与えた");
                 }
             })
             .AddTo(gameObject);
 
         gameObject.transform.localPosition = activatePos;
 
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, _lifeTime);
     }
 }

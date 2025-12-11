@@ -148,6 +148,8 @@ GameObject:
   - component: {fileID: 6603551178770728907}
   - component: {fileID: 7594237078164977533}
   - component: {fileID: 536707152199670005}
+  - component: {fileID: 7118386811037808212}
+  - component: {fileID: 5457227380339414122}
   m_Layer: 5
   m_Name: CardBase
   m_TagString: Untagged
@@ -232,6 +234,30 @@ MonoBehaviour:
   _costTMP: {fileID: 6656515978607238589}
   _cardDescriptionTMP: {fileID: 6925987450826892253}
   _cardImage: {fileID: 7594237078164977533}
+--- !u!114 &7118386811037808212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225877024309334706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd253e17d14ec9346b4e8ec0b1ecf277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: R3.Unity::R3.Triggers.ObservableEventTrigger
+--- !u!114 &5457227380339414122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225877024309334706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd171d9aab306c947af68413ae53d27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomButton
 --- !u!1 &4210903535906773997
 GameObject:
   m_ObjectHideFlags: 0
