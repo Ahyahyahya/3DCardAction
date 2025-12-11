@@ -29,6 +29,9 @@ public class CardHolder : MonoBehaviour
     private ObservableFixedSizeRingBuffer<int> _hand = new(_handCount);
     public ObservableFixedSizeRingBuffer<int> Hand => _hand;
 
+    private ObservableFixedSizeRingBuffer<int> _newCards = new(_handCount);
+    public ObservableFixedSizeRingBuffer<int> NewCards => _newCards;
+
     // 山札(IDでカードを識別する)
     private ObservableList<int> _deck = new();
     public ObservableList<int> Deck => _deck;
@@ -38,7 +41,7 @@ public class CardHolder : MonoBehaviour
     public ObservableList<int> Trash => _trash;
 
     // デッキ構成
-    private ObservableList<int> _allCards = new() { 0, 0, 0, 0, 0, 1, 1, 1, 2, 2};
+    private ObservableList<int> _allCards = new() { 0, 0, 0, 0, 0};
     public ObservableList<int> AllCards => _allCards;
 
     // ---------- UnityMessage
@@ -57,13 +60,18 @@ public class CardHolder : MonoBehaviour
             // 手札を初期化
             _hand.AddLast(-1);
 
+            _newCards.AddLast(-1);
+
             // カードを引く
             DrawCard(i);
         }
 
         var inputer = GetComponent<PlayerInputer>();
 
+        var gm = GameManager.Instance;
+
         inputer.Hand1Button
+            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .Where(input => input == true)
             .Subscribe(_ =>
             {
@@ -72,6 +80,7 @@ public class CardHolder : MonoBehaviour
             .AddTo(gameObject);
 
         inputer.Hand2Button
+            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .Where(input => input == true)
             .Subscribe(_ =>
             {
@@ -80,6 +89,7 @@ public class CardHolder : MonoBehaviour
             .AddTo(gameObject);
 
         inputer.Hand3Button
+            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .Where(input => input == true)
             .Subscribe(_ =>
             {
@@ -87,9 +97,43 @@ public class CardHolder : MonoBehaviour
             })
             .AddTo(gameObject);
 
+        gm.State
+            .Subscribe(state =>
+            {
+                if (state == GameState.TITLE)
+                {
+                    _currentEnergy.Value = 0;
+
+                    // デッキをシャッフル
+                    ShuffleCardsIntoDeck(_allCards, false);
+
+                    // 最初のドロー
+                    for (int i = 0; i < _handCount; i++)
+                    {
+                        // 手札を初期化
+                        _hand.AddLast(-1);
+
+                        _newCards.AddLast(-1);
+
+                        // カードを引く
+                        DrawCard(i);
+                    }
+
+                }
+                else if (state == GameState.CLEAR)
+                {
+                    for (int i = 0; i < _newCards.Count; i++)
+                    {
+                        _newCards[i] = Random.Range(0, _cardDataStore.GetCount);
+                    }
+                }
+            })
+            .AddTo(this);
+
         this.UpdateAsObservable()
             .Skip(1)
             .ThrottleFirst(TimeSpan.FromSeconds(_energyRecoverySec))
+            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .Where(_ => _currentEnergy.Value < _energyMax)
             .Subscribe(_ =>
             {
@@ -126,6 +170,20 @@ public class CardHolder : MonoBehaviour
         }
 
         if (isClear) { targetCards.Clear(); }
+    }
+
+    /// <summary>
+    /// 山札に新しいカードを追加する
+    /// </summary>
+    /// <param name="cardId"></param>
+    public void AddCardIntoDeck(int index)
+    {
+        _deck.Add(NewCards[index]);
+
+        if (GameManager.Instance.State.CurrentValue == GameState.CLEAR)
+        {
+            GameManager.Instance.ChangeGameState(GameState.SELECT);
+        }
     }
 
     /// <summary>

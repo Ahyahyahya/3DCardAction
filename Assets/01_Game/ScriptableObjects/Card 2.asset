@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
   m_Name: Card 2
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: 
+  dataName: Magic Thunder
   id: 2
-  _cardEffect: {fileID: -7007424218532842961, guid: 89cc2d29a5287cd4bb8200fa23d358f8, type: 3}
+  _cardEffect: {fileID: -9102369133649641920, guid: 739cb970153cfba4c872430f0624ac46, type: 3}
+  _atk: 50
   _cost: 3
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
