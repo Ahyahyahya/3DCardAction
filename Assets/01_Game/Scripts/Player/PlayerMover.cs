@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using R3;
 
@@ -23,6 +22,6 @@ public class PlayerMover : MonoBehaviour
 
                 transform.rotation = Quaternion.LookRotation(cameraForward);
             })
-            .AddTo(gameObject);
+            .AddTo(this);
     }
 }

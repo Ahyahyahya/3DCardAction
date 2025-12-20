@@ -21,13 +21,13 @@ public class EnemyManager : MonoBehaviour
 
                     if (_enemies.Count > 0) return;
 
-                    if (GameManager.Instance.ClearCnt < 2)
+                    if (PlayerDataProvider.Instance.CurrentNode.CurrentValue.type == NodeType.Boss)
                     {
-                        GameManager.Instance.ChangeGameState(GameState.CLEAR);
+                        GameManager.Instance.ChangeGameState(GameState.RESULT);
                     }
                     else
                     {
-                        GameManager.Instance.ChangeGameState(GameState.RESULT);
+                        GameManager.Instance.ChangeGameState(GameState.CLEAR);
                     }
                 })
                 .AddTo(this);
