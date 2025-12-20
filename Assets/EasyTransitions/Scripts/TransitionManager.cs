@@ -27,6 +27,19 @@ namespace EasyTransition
         private bool _isRunning;
         public bool IsRunning => _isRunning;
 
+        public void TransitionAnimOnly(TransitionSettings transition)
+        {
+            if (transition == null || _isRunning)
+            {
+                Debug.LogError("You have to assing a transition.");
+                return;
+            }
+
+            _isRunning = true;
+
+            StartCoroutine(Timer(transition));
+        }
+
         /// <summary>
         /// Starts a transition without loading a new level.
         /// </summary>
@@ -227,6 +240,30 @@ namespace EasyTransition
         {
             yield return new WaitForSecondsRealtime(delay);
 
+            _onTransitionStarted.OnNext(Unit.Default);
+
+            GameObject template = Instantiate(transitionTemplate) as GameObject;
+            template.GetComponent<Transition>().transitionSettings = transitionSettings;
+
+            float transitionTime = transitionSettings.transitionTime;
+            if (transitionSettings.autoAdjustTransitionTime)
+                transitionTime = transitionTime / transitionSettings.transitionSpeed;
+
+            yield return new WaitForSecondsRealtime(transitionTime);
+
+            template.GetComponent<Transition>().OnSceneLoad(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+
+            _onTransitionHalf.OnNext(Unit.Default);
+
+            yield return new WaitForSecondsRealtime(transitionSettings.destroyTime);
+
+            _isRunning = false;
+
+            _onTranstionCompleted.OnNext(Unit.Default);
+        }
+
+        IEnumerator Timer(TransitionSettings transitionSettings)
+        {
             _onTransitionStarted.OnNext(Unit.Default);
 
             GameObject template = Instantiate(transitionTemplate) as GameObject;
