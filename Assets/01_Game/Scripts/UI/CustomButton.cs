@@ -7,6 +7,19 @@ public class CustomButton : MonoBehaviour
 {
     // ---------- Field
     private ObservableEventTrigger _trigger;
+    private ObservableEventTrigger Trigger
+    {
+        get
+        {
+            if (_trigger == null)
+            {
+                _trigger = GetComponent<ObservableEventTrigger>();
+            }
+
+            return _trigger;
+        }
+    }
+
 
     // ボタンのアクティブ状態を保持するReactiveProperty
     private readonly ReactiveProperty<bool> _isActived = new(true);
@@ -15,7 +28,6 @@ public class CustomButton : MonoBehaviour
     // ------------------------------ UnityMessage
     protected virtual void Awake()
     {
-        _trigger = GetComponent<ObservableEventTrigger>();
         _isActived.AddTo(this);
     }
 
@@ -23,7 +35,7 @@ public class CustomButton : MonoBehaviour
     /// <summary>
     /// ボタンクリック時
     /// </summary>
-    public Observable<Unit> OnButtonClicked => _trigger
+    public Observable<Unit> OnButtonClicked => Trigger
         .OnPointerClickAsObservable()
         .AsUnitObservable()
         .Where(_ => _isActived.Value);
@@ -31,7 +43,7 @@ public class CustomButton : MonoBehaviour
     /// <summary>
     /// ボタン押した時
     /// </summary>
-    public Observable<Unit> OnButtonPressed => _trigger
+    public Observable<Unit> OnButtonPressed => Trigger
         .OnPointerDownAsObservable()
         .AsUnitObservable()
         .Where(_ => _isActived.Value);
@@ -39,7 +51,7 @@ public class CustomButton : MonoBehaviour
     /// <summary>
     /// ボタン離した時
     /// </summary>
-    public Observable<Unit> OnButtonReleased => _trigger
+    public Observable<Unit> OnButtonReleased => Trigger
         .OnPointerUpAsObservable()
         .AsUnitObservable()
         .Where (_ => _isActived.Value);
@@ -47,7 +59,7 @@ public class CustomButton : MonoBehaviour
     /// <summary>
     /// カーソルがボタンの上に乗った時
     /// </summary>
-    public Observable<Unit> OnButtonEntered => _trigger
+    public Observable<Unit> OnButtonEntered => Trigger
         .OnPointerEnterAsObservable()
         .AsUnitObservable()
         .Where(_ => _isActived.Value);
@@ -55,8 +67,12 @@ public class CustomButton : MonoBehaviour
     /// <summary>
     /// カーソルがボタンの上から出た時
     /// </summary>
-    public Observable<Unit> OnButtonExited => _trigger
+    public Observable<Unit> OnButtonExited => Trigger
         .OnPointerExitAsObservable()
         .AsUnitObservable()
         .Where(_ => _isActived.Value);
+
+    public void Active() => _isActived.Value = true;
+
+    public void Inactive() => _isActived.Value = false;
 }
