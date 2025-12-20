@@ -51,21 +51,6 @@ public class CardHolder : MonoBehaviour
     }
     private void Start()
     {
-        // デッキをシャッフル
-        ShuffleCardsIntoDeck(_allCards, false);
-
-        // 最初のドロー
-        for (int i = 0; i < _handCount; i++)
-        {
-            // 手札を初期化
-            _hand.AddLast(-1);
-
-            _newCards.AddLast(-1);
-
-            // カードを引く
-            DrawCard(i);
-        }
-
         var inputer = GetComponent<PlayerInputer>();
 
         var gm = GameManager.Instance;
