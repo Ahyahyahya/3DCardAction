@@ -19,12 +19,15 @@ public class GameManager : MonoBehaviour
 
     // ---------- Field
     [SerializeField] private StageGenerator _sg;
+    [SerializeField] private MapGenerator _mapGenerator;
+    [SerializeField] private TransitionEventer _transitionEventer;
+    [SerializeField] private TransitionAnimator _transitionAnimator;
 
     private int _clearCnt = 0;
 
     public int ClearCnt => _clearCnt;
 
-    private ReactiveProperty<GameState> _state = new(GameState.TITLE);
+    [SerializeField] private SerializableReactiveProperty<GameState> _state = new(GameState.TITLE);
     public ReadOnlyReactiveProperty<GameState> State => _state;
 
     // ---------- UnityMessage
@@ -51,15 +54,14 @@ public class GameManager : MonoBehaviour
                 Debug.Log($"[GameManager] 現在のステート:{state}");
 
                 switch (state)
-                { 
+                {
                     case GameState.TITLE:
-                        _clearCnt = 0;
                         break;
                     case GameState.SELECT:
-                        _sg.GenerateStage();
-                        ChangeGameState(GameState.BATTLE);
+                        _mapGenerator.GenerateMap();
                         break;
                     case GameState.BATTLE:
+                        _sg.GenerateStage();
                         break;
                     case GameState.CLEAR:
                         _clearCnt++;
@@ -71,8 +73,6 @@ public class GameManager : MonoBehaviour
                     case GameState.RESULT:
                         break;
                 }
-
-                
             })
             .AddTo(this);
     }
@@ -80,6 +80,13 @@ public class GameManager : MonoBehaviour
     // ---------- Method
     public void ChangeGameState(GameState state)
     {
-        _state.Value = state;
+        _transitionEventer.OnTransitionHalf
+            .Subscribe( _ =>
+            {
+                _state.Value = state;
+            })
+            .AddTo(this);
+
+        _transitionAnimator.StartTransitionAnim();
     }
 }

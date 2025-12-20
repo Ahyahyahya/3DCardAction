@@ -12,6 +12,9 @@ public class PlayerCore : MonoBehaviour, IDamageble
     private SerializableReactiveProperty<int> _hp = new(100);
     public ReadOnlyReactiveProperty<int> Hp => _hp;
 
+    private ReactiveProperty<Node> _currentNode = new();
+    public ReadOnlyReactiveProperty<Node> CurrentNode => _currentNode;
+
     // ---------- UnityMessage
     private void Start()
     {
@@ -36,6 +39,12 @@ public class PlayerCore : MonoBehaviour, IDamageble
                 }
             })
             .AddTo(this);
+    }
+
+    // ---------- Method
+    public void SetNode(Node node)
+    {
+        _currentNode.Value = node;
     }
 
     // ---------- Interface

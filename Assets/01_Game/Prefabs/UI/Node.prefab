@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7400858450141564899}
   - component: {fileID: 5736775386514218374}
   - component: {fileID: 2994057750902469938}
+  - component: {fileID: 7779306726808312154}
+  - component: {fileID: 4059886136130526787}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -101,3 +103,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd171d9aab306c947af68413ae53d27d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomButton
+--- !u!114 &7779306726808312154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342332543220938525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc687fa804bf6754ab2627e58baffa06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScalingView
+  _rect: {fileID: 8265430414700380835}
+  _targetScale: 1.2
+  _scalingTime: 1
+  _ease: 4
+--- !u!114 &4059886136130526787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342332543220938525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feab3c5db34420408ae8c977094d041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NodeColorView
+  _image: {fileID: 7400858450141564899}
+  _selectedColor: {r: 1, g: 1, b: 0, a: 1}
+  _activeColor: {r: 1, g: 1, b: 1, a: 1}
+  _inactiveColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

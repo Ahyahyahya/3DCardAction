@@ -21,6 +21,9 @@ public class PlayerInputer : MonoBehaviour, IInputProvider
     private ReactiveProperty<bool> _hand3 = new();
     public ReadOnlyReactiveProperty<bool> Hand3Button => _hand3;
 
+    private ReactiveProperty<float> _mouseMidBtn = new();
+    public ReadOnlyReactiveProperty<float> MouseMidBtn => _mouseMidBtn;
+
     // ---------- UnityMessage
     private void Start()
     {
@@ -31,29 +34,20 @@ public class PlayerInputer : MonoBehaviour, IInputProvider
         var playerActions = _inputSystemActions.Player;
 
         this.UpdateAsObservable()
-            .Select(x => playerActions.Move.ReadValue<Vector2>())
-            .Subscribe(x =>{ _move.OnNext(x) ;})
-            .AddTo(this);
-
-        this.UpdateAsObservable()
-            .Select(input => playerActions.Hand1.ReadValue<float>())
-            .Subscribe(input =>
+            .Subscribe(_ =>
             {
-                _hand1.Value = input == 1 ? true : false;
-            });
+                _move.OnNext(playerActions.Move.ReadValue<Vector2>());
 
-        this.UpdateAsObservable()
-            .Select(input => playerActions.Hand2.ReadValue<float>())
-            .Subscribe(input =>
-            {
-                _hand2.Value = input == 1 ? true : false;
-            });
+                _hand1.Value =
+                    playerActions.Hand1.ReadValue<float>() == 1 ? true : false;
 
-        this.UpdateAsObservable()
-            .Select(input => playerActions.Hand3.ReadValue<float>())
-            .Subscribe(input =>
-            {
-                _hand3.Value = input == 1 ? true : false;
+                _hand2.Value =
+                    playerActions.Hand2.ReadValue<float>() == 1 ? true : false;
+
+                _hand3.Value =
+                    playerActions.Hand3.ReadValue<float>() == 1 ? true : false;
+
+                _mouseMidBtn.Value = playerActions.Scroll.ReadValue<Vector2>().y;
             });
     }
 

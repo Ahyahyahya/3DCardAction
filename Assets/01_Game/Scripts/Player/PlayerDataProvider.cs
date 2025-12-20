@@ -17,9 +17,11 @@ public class PlayerDataProvider : MonoBehaviour
     public ReadOnlyReactiveProperty<int> CurrentEnergy => _cardHolder.CurrentEnergy;
     public ObservableFixedSizeRingBuffer<int> Hand => _cardHolder.Hand;
     public ObservableFixedSizeRingBuffer<int> NewCards => _cardHolder.NewCards;
+    public ReadOnlyReactiveProperty<Node> CurrentNode => _core.CurrentNode;
 
     // ---------- Method
     public void AddCardIntoDeck(int index) => _cardHolder.AddCardIntoDeck(index);
+    public void SetNode(Node node) => _core.SetNode(node);
 
     // ---------- UnityMessage
     private void Awake()

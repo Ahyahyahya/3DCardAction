@@ -113,6 +113,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll",
+                    "type": "PassThrough",
+                    "id": "033f04ba-a18a-43f1-98c0-feae8c7a3d25",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -531,6 +540,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Hand3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4bb3061-8183-48fe-90eb-63eefefcb788",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
