@@ -4,38 +4,17 @@ using UnityEngine;
 public class EnemyCore : MonoBehaviour, IDamageble
 {
     // ---------- Field
-    [SerializeField]
-    private SerializableReactiveProperty<int> _maxHp = new(100);
-    public ReadOnlyReactiveProperty<int> MaxHp => _maxHp;
+    [SerializeField] private EnemyData _enemyData;
+    public EnemyData EnemyData => _enemyData;
 
-    [SerializeField]
-    private SerializableReactiveProperty<int> _hp = new(100);
+    private ReactiveProperty<int> _hp = new(100);
     public ReadOnlyReactiveProperty<int> Hp => _hp;
 
     // ---------- UnityMessage
     private void Start()
     {
-        _maxHp
-            .Chunk(2, 1)
-            .Subscribe(values =>
-            {
-                // 元のHPと変化後のHPの差
-                var diff = values[1] - values[0];
-
-                // 最大HPが増えていたら
-                if (diff > 0)
-                {
-                    // その分HPを回復する
-                    _hp.Value = Mathf.Clamp(_hp.Value + diff, 0, _maxHp.Value);
-                }
-                // 最大HPが減り、現在のHPを下回ったら
-                else if (diff < 0 && _hp.Value > _maxHp.Value)
-                {
-                    // 現在のHPを最大HPに合わせる
-                    _hp.Value = _maxHp.Value;
-                }
-            })
-            .AddTo(this);
+        // ステータスの初期化
+        _hp.Value = _enemyData.MaxHp;
 
         _hp
             .Where(value => value <= 0)
