@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using ObservableCollections;
 using R3;
 using TMPro;
@@ -52,5 +53,23 @@ public class GamePresenter : BasePresenter
                 _energyTMP.text = value.ToString();
             })
             .AddTo(this);
+    }
+
+    public void CreateDamage(TextMeshProUGUI damageTMP, int damage)
+    {
+        var textTr = damageTMP.transform;
+
+        damageTMP.text = damage.ToString();
+
+        textTr.rotation = Camera.main.transform.rotation;
+
+        textTr.DOMoveY(
+            textTr.position.y + 1f,
+            1f)
+            .SetLink(damageTMP.gameObject)
+            .OnComplete(() => Destroy(damageTMP.gameObject));
+
+        damageTMP.DOFade(0f, 1f)
+            .SetLink(damageTMP.gameObject);
     }
 }
