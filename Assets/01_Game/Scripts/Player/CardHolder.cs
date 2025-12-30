@@ -25,6 +25,8 @@ public class CardHolder : MonoBehaviour
 
     private int _energyMax = 5;
 
+    private int _activateCnt = 1;
+
     // 手札(IDでカードを識別する)
     private ObservableFixedSizeRingBuffer<int> _hand = new(_handCount);
     public ObservableFixedSizeRingBuffer<int> Hand => _hand;
@@ -195,7 +197,7 @@ public class CardHolder : MonoBehaviour
     /// カードを発動する
     /// </summary>
     /// <param name="handIndex">発動する手札の要素番号</param>
-    private void PlayCard(int handIndex)
+    private async void PlayCard(int handIndex)
     {
         // 使ったカードのデータを取得
         var targetCard = _cardDataStore.FindWithId(_hand[handIndex]);
@@ -206,10 +208,9 @@ public class CardHolder : MonoBehaviour
             return;
         }
 
-        // 効果発動
-        Debug.Log($"[CardHolder] {targetCard.DataName + targetCard.Id} を発動！");
+        var activateCnt = _activateCnt;
 
-        targetCard.Activate();
+        _activateCnt = 1;
 
         // 使ったカードのコスト分エネルギーを減らす
         _currentEnergy.Value -= targetCard.Cost;
@@ -219,5 +220,20 @@ public class CardHolder : MonoBehaviour
 
         // カードを引く
         DrawCard(handIndex);
+
+        for (int i = 0; i < activateCnt; i++)
+        {
+            // 効果発動
+            Debug.Log($"[CardHolder] {targetCard.DataName + targetCard.Id} を発動！");
+
+            targetCard.Activate();
+
+            await UniTask.WaitForSeconds(0.5f);
+        }
+    }
+
+    public void AddActivateCnt(int value)
+    {
+        _activateCnt += value;
     }
 }

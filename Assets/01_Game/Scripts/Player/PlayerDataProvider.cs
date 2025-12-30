@@ -23,6 +23,8 @@ public class PlayerDataProvider : MonoBehaviour
     public void AddCardIntoDeck(int index) => _cardHolder.AddCardIntoDeck(index);
     public void SetNode(Node node) => _core.SetNode(node);
 
+    public void AddActivateCnt(int value) => _cardHolder.AddActivateCnt(value);
+
     // ---------- UnityMessage
     private void Awake()
     {
