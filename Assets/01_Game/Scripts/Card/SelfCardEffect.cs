@@ -11,7 +11,7 @@ public class SelfCardEffect : BaseCardEffect
 {
     [SerializeField] private BuffType _type;
     [SerializeField] private int _amount;
-    public override void ActivateCardEffect(CardData cardData)
+    public override void ActivateCardEffect()
     {
         var playerData = PlayerDataProvider.Instance;
 

@@ -1048,7 +1048,7 @@ Transform:
   m_GameObject: {fileID: 554525636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1032.4518, y: 0, z: 6163.8613}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3057,7 +3057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2341762b58fef864894199ffe4b99077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataStore
-  dataBase: {fileID: 0}
+  dataBase: {fileID: 11400000, guid: 4b65684c1ba723f45bf09b52863c5599, type: 2}
 --- !u!1 &1290674070
 GameObject:
   m_ObjectHideFlags: 0
@@ -4000,6 +4000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c646e7ddfeb0f4fbd5e45f21cce800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardHolder
+  _initialCards: 0100000000000000020000000200000002000000
 --- !u!114 &1624992679
 MonoBehaviour:
   m_ObjectHideFlags: 0

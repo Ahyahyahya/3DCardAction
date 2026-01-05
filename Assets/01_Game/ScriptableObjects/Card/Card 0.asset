@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   dataName: Magic Misile
   id: 0
-  _cardEffect: {fileID: 302984993181771783, guid: cff5cc08d8acaab47870386f1ee23a3a, type: 3}
+  _effectCore: {fileID: -7211427387830139265, guid: cff5cc08d8acaab47870386f1ee23a3a, type: 3}
   _atk: 10
   _cost: 1
   _sprite: {fileID: 0}

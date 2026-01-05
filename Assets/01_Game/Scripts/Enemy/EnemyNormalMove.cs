@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyNormalMove : MonoBehaviour
 {
+    [SerializeField] private EnemyCore _core;
     [SerializeField] private int _atk = 10;
+    [SerializeField] private Element _attackElement;
     [SerializeField] private float _moveSpeed = 3f;
 
     private void Start()
@@ -14,6 +16,7 @@ public class EnemyNormalMove : MonoBehaviour
         var gm = GameManager.Instance;
 
         this.UpdateAsObservable()
+            .Where(_ => _core.CanMove.CurrentValue)
             .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .Subscribe(_ =>
             {
@@ -29,7 +32,7 @@ public class EnemyNormalMove : MonoBehaviour
             {
                 if (collision.gameObject.TryGetComponent<IDamageble>(out var damageble))
                 {
-                    damageble.TakeDamage(_atk);
+                    damageble.TakeDamage(_atk, _attackElement);
                 }
             })
             .AddTo(this.gameObject);

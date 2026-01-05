@@ -1,9 +1,21 @@
 using UnityEngine;
 
+public enum Element
+{
+    None,
+    Fire,
+    Ice,
+    Thunder,
+    Wind,
+    Poison,
+}
+
 [CreateAssetMenu(menuName = "ScriptableObject/Data/Card")]
 public class CardData : BaseData
 {
-    [SerializeField] private BaseCardEffect _cardEffect;
+    [SerializeField] private Element _element;
+
+    [SerializeField] private CardEffectCore _effectCore;
 
     [SerializeField] private int _atk;
 
@@ -13,6 +25,7 @@ public class CardData : BaseData
 
     [SerializeField] private string _description;
 
+    public Element Element => _element;
     public int Atk => _atk;
     public int Cost => _cost;
     public Sprite Sprite => _sprite;
@@ -20,10 +33,8 @@ public class CardData : BaseData
 
     public void Activate()
     {
-        if (_cardEffect == null) return;
+        var core = Instantiate(_effectCore, Vector3.zero, Quaternion.identity);
 
-        var effect = Instantiate(_cardEffect);
-
-        effect.ActivateCardEffect(this);
+        core.Effect.ActivateCardEffect();
     }
 }
