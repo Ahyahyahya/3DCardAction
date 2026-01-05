@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   dataName: Magic Thunder
   id: 2
-  _cardEffect: {fileID: -9102369133649641920, guid: 739cb970153cfba4c872430f0624ac46, type: 3}
-  _atk: 50
+  _element: 2
+  _effectCore: {fileID: 5062883305364465056, guid: 2488f4d66ebe8ba45875acf569524642, type: 3}
+  _atk: 10
   _cost: 3
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"

@@ -42,8 +42,9 @@ public class CardHolder : MonoBehaviour
     private ObservableList<int> _trash = new();
     public ObservableList<int> Trash => _trash;
 
+    [SerializeField] private List<int> _initialCards = new();
     // デッキ構成
-    private ObservableList<int> _allCards = new() { 0, 0, 0, 0, 0};
+    private ObservableList<int> _allCards = new();
     public ObservableList<int> AllCards => _allCards;
 
     // ---------- UnityMessage
@@ -51,11 +52,17 @@ public class CardHolder : MonoBehaviour
     {
         _cardDataStore = FindAnyObjectByType<CardDataStore>();
     }
+
     private void Start()
     {
         var inputer = GetComponent<PlayerInputer>();
 
         var gm = GameManager.Instance;
+
+        foreach (var card in _initialCards)
+        {
+            _allCards.Add(card);
+        }
 
         inputer.Hand1Button
             .Where(_ => gm.State.CurrentValue == GameState.BATTLE)

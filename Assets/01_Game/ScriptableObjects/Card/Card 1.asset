@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
   m_Name: Card 1
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: Magic Rain
+  dataName: Poison Missle
   id: 1
-  _cardEffect: {fileID: 4706040652596043627, guid: 0714a339bc02852478d70f269b6729a3, type: 3}
-  _atk: 8
+  _element: 5
+  _effectCore: {fileID: 2134536044775632917, guid: 16f3b0ed9f8f0324fa17eeaf1c8776de, type: 3}
+  _atk: 5
   _cost: 2
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"

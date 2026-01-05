@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4667830662372139655}
   - component: {fileID: 2058912357390964082}
   - component: {fileID: 2371532391069311672}
-  - component: {fileID: 4056675499138316412}
-  - component: {fileID: 6500086395326766306}
   - component: {fileID: 6764976733887052602}
   - component: {fileID: 205695566286567343}
+  - component: {fileID: 4056675499138316412}
+  - component: {fileID: 6500086395326766306}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Enemy
@@ -93,6 +93,35 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6764976733887052602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4166311983795995061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c52c54f6caa53746b735aa36990ae07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCore
+  _enemyData: {fileID: 11400000, guid: 1b850a01ab7c32f4189d72d2d599d09c, type: 2}
+--- !u!114 &205695566286567343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4166311983795995061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eb7a258662bb9429cf5392b173d93d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyNormalMove
+  _core: {fileID: 6764976733887052602}
+  _atk: 10
+  _attackElement: 0
+  _moveSpeed: 1
 --- !u!65 &4056675499138316412
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -141,34 +170,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &6764976733887052602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4166311983795995061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c52c54f6caa53746b735aa36990ae07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyCore
-  _enemyData: {fileID: 11400000, guid: 1b850a01ab7c32f4189d72d2d599d09c, type: 2}
-  _maxHp:
-    value: 100
-  _hp:
-    value: 100
---- !u!114 &205695566286567343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4166311983795995061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eb7a258662bb9429cf5392b173d93d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyNormalMove
-  _atk: 10
-  _moveSpeed: 1

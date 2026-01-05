@@ -14,7 +14,7 @@ public class ShotCardEffect : BaseCardEffect
     private const float _createPosOffset = 3.0f;
 
     // ---------- Method
-    public override void ActivateCardEffect(CardData cardData)
+    public override void ActivateCardEffect()
     {
         var camera = Camera.main;
 
@@ -48,17 +48,9 @@ public class ShotCardEffect : BaseCardEffect
             .AddTo(gameObject);
 
         this.OnTriggerEnterAsObservable()
+            .Where(collider => !collider.GetComponent<BaseCardEffect>())
             .Subscribe(collider =>
             {
-                if (collider.TryGetComponent<IDamageble>(out var damageble))
-                {
-                    damageble.TakeDamage(cardData.Atk);
-
-                    Debug.Log(collider.name + $"‚É{cardData.Atk}ƒ_ƒ[ƒW‚ğ—^‚¦‚½‚æ");
-                }
-
-                if (collider.GetComponent<BaseCardEffect>()) return;
-
                 Instantiate(
                         _hit,
                         transform.localPosition,

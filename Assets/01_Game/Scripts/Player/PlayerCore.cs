@@ -48,7 +48,7 @@ public class PlayerCore : MonoBehaviour, IDamageble
     }
 
     // ---------- Interface
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Element element)
     {
         _hp.Value -= damage;
     }
