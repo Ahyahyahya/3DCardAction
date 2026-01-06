@@ -21,6 +21,8 @@ public class CardData : BaseData
 
     [SerializeField] private int _cost;
 
+    [SerializeField] private int _price = 100;
+
     [SerializeField] private Sprite _sprite;
 
     [SerializeField] private string _description;
@@ -28,6 +30,7 @@ public class CardData : BaseData
     public Element Element => _element;
     public int Atk => _atk;
     public int Cost => _cost;
+    public int Price => _price;
     public Sprite Sprite => _sprite;
     public string Description => _description;
 

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
   m_Name: Card 3
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: Extra Cast
+  dataName: Fire Shot
   id: 3
-  _cardEffect: {fileID: 884671752438329129, guid: 934be294eb4e95f4c8ca9b92fd644bf2, type: 3}
-  _atk: 0
+  _element: 1
+  _effectCore: {fileID: -577422622638240065, guid: 822d9d16f4116c54c830821ef9bff0a1, type: 3}
+  _atk: 10
   _cost: 1
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
