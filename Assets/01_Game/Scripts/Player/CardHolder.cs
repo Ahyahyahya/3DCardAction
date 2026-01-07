@@ -170,9 +170,9 @@ public class CardHolder : MonoBehaviour
     /// 山札に新しいカードを追加する
     /// </summary>
     /// <param name="cardId"></param>
-    public void AddCardIntoDeck(int index)
+    public void AddCardIntoDeck(int cardId)
     {
-        _deck.Add(NewCards[index]);
+        _deck.Add(cardId);
 
         if (GameManager.Instance.State.CurrentValue == GameState.CLEAR)
         {
