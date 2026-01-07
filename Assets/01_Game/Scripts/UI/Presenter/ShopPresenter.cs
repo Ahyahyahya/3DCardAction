@@ -1,13 +1,14 @@
-using ModestTree;
 using ObservableCollections;
+using System.Collections.Generic;
+using UnityEngine;
 using R3;
 using System;
-using UnityEngine;
 
-public class ClearPresenter : BasePresenter
+public class ShopPresenter : BasePresenter
 {
-    // ---------- Views
-    [SerializeField] private GameObject[] _cards = new GameObject[3];
+    // ---------- Field
+    [SerializeField] private ShopManager _shopManager;
+    [SerializeField] private List<GameObject> _cards = new();
 
     // ---------- UnityMessage
     protected override void Start()
@@ -16,16 +17,19 @@ public class ClearPresenter : BasePresenter
 
         var playerData = PlayerDataProvider.Instance;
         var cardDataStore = FindAnyObjectByType<CardDataStore>();
-        var cardViews = new CardView[3];
-        for ( int i = 0; i < _cards.Length; i++ )
+        var cardViews = new List<CardView>();
+
+        for (int i = 0; i < _cards.Count; i++)
         {
-            cardViews[i] = _cards[i].GetComponent<CardView>();
+            cardViews.Add(_cards[i].GetComponent<CardView>());
         }
 
-        playerData.NewCards
+        _shopManager.ShopCards
             .ObserveReplace()
             .Subscribe(data =>
             {
+                _cards[data.Index].SetActive(true);
+
                 cardViews[data.Index].SetCardData(cardDataStore.FindWithId(data.NewValue));
             })
             .AddTo(this);
@@ -38,9 +42,13 @@ public class ClearPresenter : BasePresenter
                 .Subscribe(_ =>
                 {
                     var targetCardData = cardDataStore.FindWithId(
-                        playerData.NewCards[_cards.IndexOf(btn.gameObject)]);
+                        _shopManager.ShopCards[_cards.IndexOf(btn.gameObject)]);
+
+                    if (playerData.Money.CurrentValue < targetCardData.Price) return;
 
                     playerData.AddCardIntoDeck(targetCardData.Id);
+                    playerData.MinusMoney(targetCardData.Price);
+                    btn.gameObject.SetActive(false);
                 })
                 .AddTo(this);
         }

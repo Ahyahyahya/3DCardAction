@@ -12,6 +12,9 @@ public class PlayerCore : MonoBehaviour, IDamageble
     private SerializableReactiveProperty<int> _hp = new(100);
     public ReadOnlyReactiveProperty<int> Hp => _hp;
 
+    private ReactiveProperty<int> _money = new(100);
+    public ReadOnlyReactiveProperty<int> Money => _money;
+
     private ReactiveProperty<Node> _currentNode = new();
     public ReadOnlyReactiveProperty<Node> CurrentNode => _currentNode;
 
@@ -46,6 +49,8 @@ public class PlayerCore : MonoBehaviour, IDamageble
     {
         _currentNode.Value = node;
     }
+    public void PlusMoney(int value) => _money.Value += value;
+    public void MinusMoney(int value) => _money.Value -= value;
 
     // ---------- Interface
     public void TakeDamage(int damage, Element element)
