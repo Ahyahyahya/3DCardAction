@@ -118,7 +118,7 @@ public class SelectPresenter : BasePresenter
                     case NodeType.Rest:
                         break;
                     case NodeType.Shop:
-                        //_gameManager.ChangeGameState(GameState.SHOP);
+                        _gameManager.ChangeGameState(GameState.SHOP);
                         break;
                 }
             })
