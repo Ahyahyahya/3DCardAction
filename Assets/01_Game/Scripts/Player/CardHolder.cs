@@ -62,9 +62,18 @@ public class CardHolder : MonoBehaviour
 
         var gm = GameManager.Instance;
 
+        // 初期化
         foreach (var card in _initialCards)
         {
             _allCards.Add(card);
+        }
+
+        for (int i = 0; i < _handCount; i++)
+        {
+            // 手札を初期化
+            _hand.AddLast(-1);
+
+            _newCards.AddLast(-1);
         }
 
         inputer.LeftMouseBtn
@@ -76,6 +85,7 @@ public class CardHolder : MonoBehaviour
             })
             .AddTo(gameObject);
 
+        // 発動するカードを選ぶ処理
         inputer.MouseMidBtn
             .ThrottleFirst(TimeSpan.FromSeconds(0.5f))
             .Subscribe(input =>
@@ -118,11 +128,6 @@ public class CardHolder : MonoBehaviour
                     // 最初のドロー
                     for (int i = 0; i < _handCount; i++)
                     {
-                        // 手札を初期化
-                        _hand.AddLast(-1);
-
-                        _newCards.AddLast(-1);
-
                         // カードを引く
                         DrawCard(i);
                     }
@@ -133,6 +138,17 @@ public class CardHolder : MonoBehaviour
                     for (int i = 0; i < _newCards.Count; i++)
                     {
                         _newCards[i] = Random.Range(0, _cardDataStore.GetCount);
+
+                        Debug.Log($"[CardHolder] 新カード{i}番" + _cardDataStore.FindWithId(_newCards[i]).DataName);
+                    }
+                }
+                else if (state == GameState.TITLE)
+                {
+                    _allCards.Clear();
+
+                    foreach (var initialCard in _initialCards)
+                    {
+                        _allCards.Add(initialCard);
                     }
                 }
             })
@@ -159,6 +175,9 @@ public class CardHolder : MonoBehaviour
         ObservableList<int> targetCards,
         bool isClear = true)
     {
+        // 山札をリセット
+        _deck.Clear();
+
         // 対象のカード達のカードをランダムに山札に格納するための一時的変数
         var tmpCards = new List<int>(targetCards);
 
@@ -184,7 +203,7 @@ public class CardHolder : MonoBehaviour
     /// <param name="cardId"></param>
     public void AddCardIntoDeck(int cardId)
     {
-        _deck.Add(cardId);
+        _allCards.Add(cardId);
 
         if (GameManager.Instance.State.CurrentValue == GameState.CLEAR)
         {
