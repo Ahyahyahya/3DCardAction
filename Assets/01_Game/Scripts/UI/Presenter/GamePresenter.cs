@@ -2,15 +2,20 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using ObservableCollections;
 using R3;
+using System;
 using TMPro;
 using UnityEngine;
 
 public class GamePresenter : BasePresenter
 {
+    // ---------- Model
+    [SerializeField] private PlayerInputer _inputer;
+
     // ---------- View
     [SerializeField] private SliderAnimation _hpSlider;
     [SerializeField] private TextMeshProUGUI _energyTMP;
     [SerializeField] private CardView[] _cards = new CardView[3];
+    [SerializeField] private SlideCardsView _slideCardsView;
 
     // ---------- UnityMessage
     protected override void Start()
@@ -19,6 +24,7 @@ public class GamePresenter : BasePresenter
 
         // Model
         var playerDatas = PlayerDataProvider.Instance;
+        var gameManager =GameManager.Instance;
         var cardDataStore = FindAnyObjectByType<CardDataStore>();
 
         // Œ»Ý‚ÌHP‚ÌƒQ[ƒW”ä—¦‚ð’²®
@@ -51,6 +57,32 @@ public class GamePresenter : BasePresenter
             .Subscribe(value =>
             {
                 _energyTMP.text = value.ToString();
+            })
+            .AddTo(this);
+
+        //_inputer.MouseMidBtn
+        //    .ThrottleFirst(TimeSpan.FromSeconds(0.5f))
+        //    .Where(_ => gameManager.State.CurrentValue == GameState.BATTLE)
+        //    .Subscribe(input =>
+        //    {
+        //        if (input > 0)
+        //        {
+        //            _slideCardsView.SlideOut();
+        //        }
+        //        else if (input < 0)
+        //        {
+        //            _slideCardsView.SlideIn();
+        //        }
+        //    })
+        //    .AddTo(this);
+
+        playerDatas.CurCardNum
+            .Skip(1)
+            .Subscribe(num =>
+            {
+                _cards[num].transform.SetAsLastSibling();
+
+                _slideCardsView.Slide(num);
             })
             .AddTo(this);
     }

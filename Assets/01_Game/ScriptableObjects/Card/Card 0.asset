@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
   m_Name: Card 0
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: Magic Misile
+  dataName: Magic Shot
   id: 0
+  _element: 0
   _effectCore: {fileID: -7211427387830139265, guid: cff5cc08d8acaab47870386f1ee23a3a, type: 3}
   _atk: 10
   _cost: 1
+  _price: 100
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"

@@ -88,27 +88,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hand1",
+                    "name": "ActivateCard",
                     "type": "Button",
                     "id": "23d07d0a-1644-43aa-912a-4e5e593d473d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hand2",
-                    "type": "Button",
-                    "id": "ecc2f562-1e31-4cd1-9031-8c6e0acf3bc0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hand3",
-                    "type": "Button",
-                    "id": "ef4312b7-0fe7-4509-b3e2-50d7ea045f46",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -513,33 +495,11 @@
                 {
                     "name": "",
                     "id": "a2aad2bf-7fd9-4078-a1e5-f7c13ad32540",
-                    "path": "<Keyboard>/1",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Hand1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d4ce4296-c69e-4c44-8135-873b2810c785",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Hand2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cedc26e3-f816-4df0-a0fc-e31a0d5fb29f",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Hand3",
+                    "action": "ActivateCard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

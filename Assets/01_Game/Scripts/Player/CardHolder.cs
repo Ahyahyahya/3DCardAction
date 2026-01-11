@@ -27,6 +27,9 @@ public class CardHolder : MonoBehaviour
 
     private int _activateCnt = 1;
 
+    private ReactiveProperty<int> _curCardNum = new(1);
+    public ReadOnlyReactiveProperty<int> CurCardNum => _curCardNum;
+
     // 手札(IDでカードを識別する)
     private ObservableFixedSizeRingBuffer<int> _hand = new(_handCount);
     public ObservableFixedSizeRingBuffer<int> Hand => _hand;
@@ -64,37 +67,48 @@ public class CardHolder : MonoBehaviour
             _allCards.Add(card);
         }
 
-        inputer.Hand1Button
+        inputer.LeftMouseBtn
             .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .Where(input => input == true)
             .Subscribe(_ =>
             {
-                PlayCard(0);
+                PlayCard(_curCardNum.Value);
             })
             .AddTo(gameObject);
 
-        inputer.Hand2Button
-            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
-            .Where(input => input == true)
-            .Subscribe(_ =>
+        inputer.MouseMidBtn
+            .ThrottleFirst(TimeSpan.FromSeconds(0.5f))
+            .Subscribe(input =>
             {
-                PlayCard(1);
-            })
-            .AddTo(gameObject);
-
-        inputer.Hand3Button
-            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
-            .Where(input => input == true)
-            .Subscribe(_ =>
-            {
-                PlayCard(2);
+                if (input > 0)
+                {
+                    if (_curCardNum.Value + 1 >= Hand.Count)
+                    {
+                        _curCardNum.Value = 0;
+                    }
+                    else
+                    {
+                        _curCardNum.Value++;
+                    }
+                }
+                else if (input < 0)
+                {
+                    if (_curCardNum.Value - 1 < 0)
+                    {
+                        _curCardNum.Value = Hand.Count - 1;
+                    }
+                    else
+                    {
+                        _curCardNum.Value--;
+                    }
+                }
             })
             .AddTo(gameObject);
 
         gm.State
             .Subscribe(state =>
             {
-                if (state == GameState.TITLE)
+                if (state == GameState.BATTLE)
                 {
                     _currentEnergy.Value = 0;
 
@@ -145,8 +159,6 @@ public class CardHolder : MonoBehaviour
         ObservableList<int> targetCards,
         bool isClear = true)
     {
-        Debug.Log("[CardHolder] 山札をシャッフル！");
-
         // 対象のカード達のカードをランダムに山札に格納するための一時的変数
         var tmpCards = new List<int>(targetCards);
 
@@ -197,7 +209,6 @@ public class CardHolder : MonoBehaviour
         {
             ShuffleCardsIntoDeck(_trash);
         }
-        Debug.Log($"[CardHolder] 残り山札: {_deck.Count}");
     }
 
     /// <summary>
@@ -230,9 +241,6 @@ public class CardHolder : MonoBehaviour
 
         for (int i = 0; i < activateCnt; i++)
         {
-            // 効果発動
-            Debug.Log($"[CardHolder] {targetCard.DataName + targetCard.Id} を発動！");
-
             targetCard.Activate();
 
             await UniTask.WaitForSeconds(0.5f);
