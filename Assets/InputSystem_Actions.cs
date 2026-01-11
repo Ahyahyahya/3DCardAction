@@ -174,27 +174,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Hand1"",
+                    ""name"": ""ActivateCard"",
                     ""type"": ""Button"",
                     ""id"": ""23d07d0a-1644-43aa-912a-4e5e593d473d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hand2"",
-                    ""type"": ""Button"",
-                    ""id"": ""ecc2f562-1e31-4cd1-9031-8c6e0acf3bc0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hand3"",
-                    ""type"": ""Button"",
-                    ""id"": ""ef4312b7-0fe7-4509-b3e2-50d7ea045f46"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -599,33 +581,11 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a2aad2bf-7fd9-4078-a1e5-f7c13ad32540"",
-                    ""path"": ""<Keyboard>/1"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hand1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d4ce4296-c69e-4c44-8135-873b2810c785"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hand2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cedc26e3-f816-4df0-a0fc-e31a0d5fb29f"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hand3"",
+                    ""action"": ""ActivateCard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1233,9 +1193,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
         m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_Hand1 = m_Player.FindAction("Hand1", throwIfNotFound: true);
-        m_Player_Hand2 = m_Player.FindAction("Hand2", throwIfNotFound: true);
-        m_Player_Hand3 = m_Player.FindAction("Hand3", throwIfNotFound: true);
+        m_Player_ActivateCard = m_Player.FindAction("ActivateCard", throwIfNotFound: true);
         m_Player_Scroll = m_Player.FindAction("Scroll", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1339,9 +1297,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Previous;
     private readonly InputAction m_Player_Next;
     private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_Hand1;
-    private readonly InputAction m_Player_Hand2;
-    private readonly InputAction m_Player_Hand3;
+    private readonly InputAction m_Player_ActivateCard;
     private readonly InputAction m_Player_Scroll;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
@@ -1391,17 +1347,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Hand1".
+        /// Provides access to the underlying input action "Player/ActivateCard".
         /// </summary>
-        public InputAction @Hand1 => m_Wrapper.m_Player_Hand1;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Hand2".
-        /// </summary>
-        public InputAction @Hand2 => m_Wrapper.m_Player_Hand2;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Hand3".
-        /// </summary>
-        public InputAction @Hand3 => m_Wrapper.m_Player_Hand3;
+        public InputAction @ActivateCard => m_Wrapper.m_Player_ActivateCard;
         /// <summary>
         /// Provides access to the underlying input action "Player/Scroll".
         /// </summary>
@@ -1459,15 +1407,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Hand1.started += instance.OnHand1;
-            @Hand1.performed += instance.OnHand1;
-            @Hand1.canceled += instance.OnHand1;
-            @Hand2.started += instance.OnHand2;
-            @Hand2.performed += instance.OnHand2;
-            @Hand2.canceled += instance.OnHand2;
-            @Hand3.started += instance.OnHand3;
-            @Hand3.performed += instance.OnHand3;
-            @Hand3.canceled += instance.OnHand3;
+            @ActivateCard.started += instance.OnActivateCard;
+            @ActivateCard.performed += instance.OnActivateCard;
+            @ActivateCard.canceled += instance.OnActivateCard;
             @Scroll.started += instance.OnScroll;
             @Scroll.performed += instance.OnScroll;
             @Scroll.canceled += instance.OnScroll;
@@ -1509,15 +1451,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Hand1.started -= instance.OnHand1;
-            @Hand1.performed -= instance.OnHand1;
-            @Hand1.canceled -= instance.OnHand1;
-            @Hand2.started -= instance.OnHand2;
-            @Hand2.performed -= instance.OnHand2;
-            @Hand2.canceled -= instance.OnHand2;
-            @Hand3.started -= instance.OnHand3;
-            @Hand3.performed -= instance.OnHand3;
-            @Hand3.canceled -= instance.OnHand3;
+            @ActivateCard.started -= instance.OnActivateCard;
+            @ActivateCard.performed -= instance.OnActivateCard;
+            @ActivateCard.canceled -= instance.OnActivateCard;
             @Scroll.started -= instance.OnScroll;
             @Scroll.performed -= instance.OnScroll;
             @Scroll.canceled -= instance.OnScroll;
@@ -1885,26 +1821,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSprint(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Hand1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ActivateCard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHand1(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Hand2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHand2(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Hand3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnHand3(InputAction.CallbackContext context);
+        void OnActivateCard(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Scroll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

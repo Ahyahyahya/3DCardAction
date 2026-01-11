@@ -12,14 +12,8 @@ public class PlayerInputer : MonoBehaviour, IInputProvider
     private ReactiveProperty<Vector2> _move = new();
     public ReadOnlyReactiveProperty<Vector2> MoveButton => _move;
 
-    private ReactiveProperty<bool> _hand1 = new();
-    public ReadOnlyReactiveProperty<bool> Hand1Button => _hand1;
-
-    private ReactiveProperty<bool> _hand2 = new();
-    public ReadOnlyReactiveProperty<bool> Hand2Button => _hand2;
-
-    private ReactiveProperty<bool> _hand3 = new();
-    public ReadOnlyReactiveProperty<bool> Hand3Button => _hand3;
+    private ReactiveProperty<bool> _leftMouseBtn = new();
+    public ReadOnlyReactiveProperty<bool> LeftMouseBtn => _leftMouseBtn;
 
     private ReactiveProperty<float> _mouseMidBtn = new();
     public ReadOnlyReactiveProperty<float> MouseMidBtn => _mouseMidBtn;
@@ -38,22 +32,10 @@ public class PlayerInputer : MonoBehaviour, IInputProvider
             {
                 _move.OnNext(playerActions.Move.ReadValue<Vector2>());
 
-                _hand1.Value =
-                    playerActions.Hand1.ReadValue<float>() == 1 ? true : false;
-
-                _hand2.Value =
-                    playerActions.Hand2.ReadValue<float>() == 1 ? true : false;
-
-                _hand3.Value =
-                    playerActions.Hand3.ReadValue<float>() == 1 ? true : false;
+                _leftMouseBtn.Value =
+                    playerActions.ActivateCard.ReadValue<float>() == 1 ? true : false;
 
                 _mouseMidBtn.Value = playerActions.Scroll.ReadValue<Vector2>().y;
             });
-    }
-
-    // ---------- InputSystem
-    private void OnHand1(InputAction.CallbackContext context)
-    {
-        _hand1.Value = context.ReadValue<bool>();
     }
 }

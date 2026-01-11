@@ -17,6 +17,7 @@ public class PlayerDataProvider : MonoBehaviour
     public ReadOnlyReactiveProperty<int> CurrentEnergy => _cardHolder.CurrentEnergy;
     public ReadOnlyReactiveProperty<int> Money => _core.Money;
     public ObservableFixedSizeRingBuffer<int> Hand => _cardHolder.Hand;
+    public ReadOnlyReactiveProperty<int> CurCardNum => _cardHolder.CurCardNum;
     public ObservableFixedSizeRingBuffer<int> NewCards => _cardHolder.NewCards;
     public ReadOnlyReactiveProperty<Node> CurrentNode => _core.CurrentNode;
 
