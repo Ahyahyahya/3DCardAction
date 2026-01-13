@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(CardEffectCore))]
-public class CardDataEditor : Editor
+public class CardEffectCoreEditor : Editor
 {
     private Editor Instance;
 
