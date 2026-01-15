@@ -20,6 +20,8 @@ public class ShotCardEffect : BaseCardEffect
 
         var rb = GetComponent<Rigidbody>();
 
+        var core = GetComponent<CardEffectCore>();
+
         // 発射位置調整
         transform.localPosition =
             camera.transform.localPosition + camera.transform.forward * _createPosOffset;
@@ -27,23 +29,29 @@ public class ShotCardEffect : BaseCardEffect
         // 発射角度調整
         transform.localRotation = camera.transform.localRotation;
 
-        // 生成エフェクト
-        Instantiate(
+        if (_muzzle != null)
+        {
+            // 生成エフェクト
+            Instantiate(
             _muzzle,
             transform.localPosition,
             transform.localRotation);
+        }
 
-        // 発射物のトレイル
-        var trail = Instantiate(
-            _trail,
-            transform.localPosition,
-            transform.localRotation,
-            transform);
+        if (_trail != null)
+        {
+            // 発射物のトレイル
+            var trail = Instantiate(
+                _trail,
+                transform.localPosition,
+                transform.localRotation,
+                transform);
+        }
 
         this.FixedUpdateAsObservable()
             .Subscribe(_ =>
             {
-                rb.AddForce(transform.forward * 5f);
+                rb.AddForce(transform.forward * core.CardData.MoveSpeed);
             })
             .AddTo(gameObject);
 

@@ -8,6 +8,7 @@ using R3;
 using R3.Triggers;
 using System;
 using Random = UnityEngine.Random;
+using System.Threading;
 
 public class CardHolder : MonoBehaviour
 {
@@ -26,6 +27,15 @@ public class CardHolder : MonoBehaviour
     private int _energyMax = 5;
 
     private int _activateCnt = 1;
+
+    private bool _isCasting = false;
+
+    private ReactiveProperty<bool> _isCastSuccess = new();
+    public ReadOnlyReactiveProperty<bool> IsCastSuccess => _isCastSuccess;
+
+    private ReactiveProperty<float> _curCastTime = new();
+
+    public ReadOnlyReactiveProperty<float> CurCastTime => _curCastTime;
 
     private ReactiveProperty<int> _curCardNum = new(1);
     public ReadOnlyReactiveProperty<int> CurCardNum => _curCardNum;
@@ -78,10 +88,11 @@ public class CardHolder : MonoBehaviour
 
         inputer.LeftMouseBtn
             .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
-            .Where(input => input == true)
-            .Subscribe(_ =>
+            .Subscribe(input =>
             {
-                PlayCard(_curCardNum.Value);
+                _isCasting = input;
+
+                // PlayCard(_curCardNum.Value);
             })
             .AddTo(gameObject);
 
@@ -163,6 +174,8 @@ public class CardHolder : MonoBehaviour
             {
                 _currentEnergy.Value++;
             });
+
+        CheckCastLoop(destroyCancellationToken).Forget();
     }
 
     // ---------- Method
@@ -263,6 +276,46 @@ public class CardHolder : MonoBehaviour
             targetCard.Activate();
 
             await UniTask.WaitForSeconds(0.5f);
+        }
+    }
+
+    /// <summary>
+    /// キャスト時間分長押ししているか確認する
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns></returns>
+    private async UniTask CheckCastLoop(CancellationToken ct)
+    {
+        while (!ct.IsCancellationRequested)
+        {
+            if (_isCasting)
+            {
+                Debug.Log("[CardHolder] キャスト中");
+
+                if (!_isCastSuccess.Value)
+                {
+                    _curCastTime.Value += Time.deltaTime;
+
+                    if (_curCastTime.Value >= _cardDataStore.FindWithId(_hand[_curCardNum.Value]).CastTime)
+                    {
+                        Debug.Log("[CardHolder] キャスト完了");
+
+                        PlayCard(_curCardNum.Value);
+
+                        _isCastSuccess.Value = true;
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("[CardHolder] キャストリセット");
+
+                _curCastTime.Value = 0;
+
+                _isCastSuccess.Value = false;
+            }
+
+            await UniTask.Yield();
         }
     }
 

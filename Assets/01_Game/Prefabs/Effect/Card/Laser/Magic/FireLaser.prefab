@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8686284108774756643
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 729853584062038259, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273883992675772031, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2961758683292458517, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4116106003204237149, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107539726486969994, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506907108213092316, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: m_Name
+      value: FireLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693536376153620209, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: LaserStop
+      value: 
+      objectReference: {fileID: 2673583329011686517, guid: e65a52ffe6d0ed8498cc210b192c8569, type: 3}
+    - target: {fileID: 8693536376153620209, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: LaserStart
+      value: 
+      objectReference: {fileID: 1675852024075679837, guid: 4a5c05545c3a3bd438e0eba984b59441, type: 3}
+    - target: {fileID: 8693536376153620209, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      propertyPath: LaserDistance
+      value: 30
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8506907108213092316, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7128500910808010224}
+    - targetCorrespondingSourceObject: {fileID: 8506907108213092316, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4908624469727032070}
+  m_SourcePrefab: {fileID: 100100000, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+--- !u!114 &13022779317252050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8693536376153620209, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+  m_PrefabInstance: {fileID: 8686284108774756643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046378353347182335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70dc160a5000f04bbfd6bd058646d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1046378353347182335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8506907108213092316, guid: 759bb421bddda2d4c9ce6f287dbd0403, type: 3}
+  m_PrefabInstance: {fileID: 8686284108774756643}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7128500910808010224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046378353347182335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ec988e0e3d31c4aadcd3ec2ed412ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LaserCardEffect
+  _laser: {fileID: 13022779317252050}
+--- !u!114 &-4908624469727032070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046378353347182335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86921a5731963eb439626a380df15b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardEffectCore
+  _cardData: {fileID: 11400000, guid: 671ac14e2cbb05046bf6553c891cada7, type: 2}
+  _effect: {fileID: 7128500910808010224}

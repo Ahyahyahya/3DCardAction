@@ -5760,7 +5760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c646e7ddfeb0f4fbd5e45f21cce800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardHolder
-  _initialCards: 00000000010000000200000003000000
+  _initialCards: 0800000008000000070000000700000007000000
 --- !u!114 &1624992679
 MonoBehaviour:
   m_ObjectHideFlags: 0
