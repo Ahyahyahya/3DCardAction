@@ -28,7 +28,8 @@ public class CardHolder : MonoBehaviour
 
     private int _activateCnt = 1;
 
-    private bool _isCasting = false;
+    private ReactiveProperty<bool> _isCasting = new();
+    public ReadOnlyReactiveProperty<bool> IsCasting => _isCasting;
 
     private ReactiveProperty<bool> _isCastSuccess = new();
     public ReadOnlyReactiveProperty<bool> IsCastSuccess => _isCastSuccess;
@@ -90,7 +91,7 @@ public class CardHolder : MonoBehaviour
             .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .Subscribe(input =>
             {
-                _isCasting = input;
+                _isCasting.Value = input;
 
                 // PlayCard(_curCardNum.Value);
             })
@@ -288,18 +289,14 @@ public class CardHolder : MonoBehaviour
     {
         while (!ct.IsCancellationRequested)
         {
-            if (_isCasting)
+            if (_isCasting.Value)
             {
-                Debug.Log("[CardHolder] キャスト中");
-
                 if (!_isCastSuccess.Value)
                 {
                     _curCastTime.Value += Time.deltaTime;
 
                     if (_curCastTime.Value >= _cardDataStore.FindWithId(_hand[_curCardNum.Value]).CastTime)
                     {
-                        Debug.Log("[CardHolder] キャスト完了");
-
                         PlayCard(_curCardNum.Value);
 
                         _isCastSuccess.Value = true;
@@ -308,8 +305,6 @@ public class CardHolder : MonoBehaviour
             }
             else
             {
-                Debug.Log("[CardHolder] キャストリセット");
-
                 _curCastTime.Value = 0;
 
                 _isCastSuccess.Value = false;

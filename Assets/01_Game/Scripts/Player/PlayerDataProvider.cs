@@ -20,6 +20,9 @@ public class PlayerDataProvider : MonoBehaviour
     public ReadOnlyReactiveProperty<int> CurCardNum => _cardHolder.CurCardNum;
     public ObservableFixedSizeRingBuffer<int> NewCards => _cardHolder.NewCards;
     public ReadOnlyReactiveProperty<Node> CurrentNode => _core.CurrentNode;
+    public ReadOnlyReactiveProperty<float> CurCastTime => _cardHolder.CurCastTime;
+    public ReadOnlyReactiveProperty<bool> IsCasting => _cardHolder.IsCasting;
+    public ReadOnlyReactiveProperty<bool> IsCastSuccess => _cardHolder.IsCastSuccess;
 
     // ---------- Method
     public void AddCardIntoDeck(int index) => _cardHolder.AddCardIntoDeck(index);
