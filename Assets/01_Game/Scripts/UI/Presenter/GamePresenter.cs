@@ -13,6 +13,8 @@ public class GamePresenter : BasePresenter
 
     // ---------- View
     [SerializeField] private SliderAnimation _hpSlider;
+    [SerializeField] private SliderAnimation _castSlider;
+    [SerializeField] private TextMeshProUGUI _cardNameTMP;
     [SerializeField] private TextMeshProUGUI _energyTMP;
     [SerializeField] private CardView[] _cards = new CardView[3];
     [SerializeField] private SlideCardsView _slideCardsView;
@@ -24,14 +26,14 @@ public class GamePresenter : BasePresenter
 
         // Model
         var playerDatas = PlayerDataProvider.Instance;
-        var gameManager =GameManager.Instance;
+        var gameManager = GameManager.Instance;
         var cardDataStore = FindAnyObjectByType<CardDataStore>();
 
         // Œ»Ý‚ÌHP‚ÌƒQ[ƒW”ä—¦‚ð’²®
         playerDatas.MaxHp
             .Subscribe(value =>
             {
-                _hpSlider.SetValue((float)playerDatas.Hp.CurrentValue / value);
+                _hpSlider.SetValueWithAnimation((float)playerDatas.Hp.CurrentValue / value);
             })
             .AddTo(this);
 
@@ -39,7 +41,7 @@ public class GamePresenter : BasePresenter
         playerDatas.Hp
             .Subscribe(value =>
             {
-                _hpSlider.SetValue((float)value / playerDatas.MaxHp.CurrentValue);
+                _hpSlider.SetValueWithAnimation((float)value / playerDatas.MaxHp.CurrentValue);
             })
             .AddTo(this);
 
@@ -60,22 +62,6 @@ public class GamePresenter : BasePresenter
             })
             .AddTo(this);
 
-        //_inputer.MouseMidBtn
-        //    .ThrottleFirst(TimeSpan.FromSeconds(0.5f))
-        //    .Where(_ => gameManager.State.CurrentValue == GameState.BATTLE)
-        //    .Subscribe(input =>
-        //    {
-        //        if (input > 0)
-        //        {
-        //            _slideCardsView.SlideOut();
-        //        }
-        //        else if (input < 0)
-        //        {
-        //            _slideCardsView.SlideIn();
-        //        }
-        //    })
-        //    .AddTo(this);
-
         playerDatas.CurCardNum
             .Skip(1)
             .Subscribe(num =>
@@ -85,6 +71,45 @@ public class GamePresenter : BasePresenter
                 _slideCardsView.Slide(num);
             })
             .AddTo(this);
+
+        playerDatas.IsCasting
+            .Subscribe(isCasting =>
+            {
+                if (isCasting)
+                {
+                    _castSlider.gameObject.SetActive(true);
+                }
+                else
+                {
+                    _castSlider.gameObject.SetActive(false);
+                }
+
+            })
+            .AddTo(this);
+
+        playerDatas.IsCastSuccess
+            .Where(value => value == true)
+            .Subscribe(_ =>
+            {
+                _castSlider.gameObject.SetActive(false);
+            })
+            .AddTo(this);
+
+        playerDatas.CurCastTime
+            .Subscribe(value =>
+            {
+                var targetCardId = playerDatas.Hand[playerDatas.CurCardNum.CurrentValue];
+
+                var targetCard = cardDataStore.FindWithId(targetCardId);
+
+                _cardNameTMP.text = targetCard.DataName;
+
+                if (targetCard.CastTime == 0) return;
+
+                _castSlider.SetValue(value / targetCard.CastTime);
+            })
+            .AddTo(this);
+
     }
 
     public void CreateDamage(TextMeshProUGUI damageTMP, int damage)

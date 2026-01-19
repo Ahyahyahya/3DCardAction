@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4637579480116259372
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3670779439721532142, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: LaserStop
+      value: 
+      objectReference: {fileID: 7529059097412254107, guid: 41f0eae6768b0fa42b6fd2792ebf6ecb, type: 3}
+    - target: {fileID: 3670779439721532142, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: LaserStart
+      value: 
+      objectReference: {fileID: 2974833175436823411, guid: 4e11d039c2567bd4f8500c89aa231cd3, type: 3}
+    - target: {fileID: 6872395224543704785, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_Name
+      value: ThunderLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.87227213
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.35670662
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.24035965
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.23265651
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -47.234
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 21.907
+      objectReference: {fileID: 0}
+    - target: {fileID: 7969794121435077732, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 20.195
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6872395224543704785, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 124564670892276726}
+    - targetCorrespondingSourceObject: {fileID: 6872395224543704785, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8834587397859339277}
+  m_SourcePrefab: {fileID: 100100000, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+--- !u!1 &2235011356866436349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6872395224543704785, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+  m_PrefabInstance: {fileID: 4637579480116259372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &124564670892276726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235011356866436349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86921a5731963eb439626a380df15b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardEffectCore
+  _cardData: {fileID: 11400000, guid: be8336d9f5acac84bbbb8a3ba293c70e, type: 2}
+  _effect: {fileID: 8834587397859339277}
+--- !u!114 &8834587397859339277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235011356866436349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ec988e0e3d31c4aadcd3ec2ed412ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LaserCardEffect
+  _laser: {fileID: 8262635840150216898}
+--- !u!114 &8262635840150216898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3670779439721532142, guid: 8f912873894cde4489885a2c7bab088f, type: 3}
+  m_PrefabInstance: {fileID: 4637579480116259372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235011356866436349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70dc160a5000f04bbfd6bd058646d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

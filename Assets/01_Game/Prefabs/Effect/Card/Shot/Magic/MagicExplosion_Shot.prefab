@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1263425331349657558
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1293421852517723771, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407947506493351993, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752829258188131658, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      propertyPath: m_Name
+      value: MagicExplosion_Shot
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8752829258188131658, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 3435868358463686430}
+    - targetCorrespondingSourceObject: {fileID: 8752829258188131658, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7845608288354961948}
+    - targetCorrespondingSourceObject: {fileID: 8752829258188131658, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4145273174931214159}
+  m_SourcePrefab: {fileID: 100100000, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+--- !u!1 &7561787251263314588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8752829258188131658, guid: 2f0a315ee8f8bba43b0851352fdec021, type: 3}
+  m_PrefabInstance: {fileID: 1263425331349657558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &3435868358463686430
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7561787251263314588}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7845608288354961948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7561787251263314588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86921a5731963eb439626a380df15b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardEffectCore
+  _cardData: {fileID: 11400000, guid: ea01878cfccf1d047af9c3675cacc037, type: 2}
+  _effect: {fileID: -4145273174931214159}
+--- !u!114 &-4145273174931214159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7561787251263314588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 708f971dbb363024896d6aa6274a5f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShotCardEffect
+  _muzzle: {fileID: 6042495967054589061, guid: f180989bc89d48940a700b94afb777e8, type: 3}
+  _hit: {fileID: 1882610469297425078, guid: 24782360fc9430848bcf188f79489ca3, type: 3}
+  _trail: {fileID: 3616028933089008652, guid: 953e114c667b24541ab4bcd31d81c6da, type: 3}

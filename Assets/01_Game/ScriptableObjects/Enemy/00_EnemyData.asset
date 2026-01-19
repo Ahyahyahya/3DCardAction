@@ -15,5 +15,5 @@ MonoBehaviour:
   dataName: 
   id: 0
   _enemyPrefab: {fileID: 6764976733887052602, guid: 1a4009523cdbe9e42baf78bba5bf6b34, type: 3}
-  _maxHp: 100
+  _maxHp: 10
   _atk: 10

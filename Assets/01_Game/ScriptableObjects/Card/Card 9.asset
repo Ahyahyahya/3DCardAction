@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
   m_Name: Card 9
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
+  dataName: Ice Laser
   id: 9
-  _cost: 0
+  _effectType: 3
+  _element: 2
+  _effectCore: {fileID: -6810490732284489900, guid: bde5c1a2306c6fe4b8ab940a283f617d, type: 3}
+  _cost: 5
+  _atk: 3
+  _castTime: 4
+  _price: 100
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
+  _moveSpeed: 1
+  _damageCnt: 20
+  _damageInterval: 0.1

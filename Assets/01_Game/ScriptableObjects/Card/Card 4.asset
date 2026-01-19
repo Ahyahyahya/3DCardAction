@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
   m_Name: Card 4
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
+  dataName: Ice Wall
   id: 4
-  _cost: 0
+  _effectType: 1
+  _element: 2
+  _effectCore: {fileID: 7005762051997470357, guid: 29d5e15d2688f8b4f9cbd26b63e8b03b, type: 3}
+  _cost: 3
+  _atk: 50
+  _castTime: 3
+  _price: 100
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
+  _moveSpeed: 1
+  _damageCnt: 0
+  _damageInterval: 0
