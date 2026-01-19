@@ -6,6 +6,8 @@ public class FrontCardEffect : BaseCardEffect
 
     [SerializeField] private float _createPosOffset = 3f;
 
+    [SerializeField] private bool _isGrounded;
+
     public override void ActivateCardEffect()
     {
         var cameraTr = Camera.main.transform;
@@ -16,25 +18,32 @@ public class FrontCardEffect : BaseCardEffect
         transform.localPosition =
             cameraTr.localPosition + cameraTr.forward * _createPosOffset;
 
-        // î≠éÀäpìxí≤êÆ
-        transform.localRotation = Quaternion.LookRotation(playerData.transform.forward);
-
-        transform.eulerAngles += _rotOffset;
-
-        var ray = new Ray(transform.position, Vector3.down);
-
-        if (Physics.Raycast(
-            ray,
-            out var hit,
-            100f,
-            LayerMask.GetMask("Ground")))
+        if (_isGrounded)
         {
-            Debug.Log("AAA");
+            // î≠éÀäpìxí≤êÆ
+            transform.localRotation = Quaternion.LookRotation(playerData.transform.forward);
 
-            transform.localPosition = new Vector3(
-                transform.localPosition.x,
-                hit.point.y,
-                transform.localPosition.z);
+            transform.eulerAngles += _rotOffset;
+
+            var ray = new Ray(transform.position, Vector3.down);
+
+            if (Physics.Raycast(
+                ray,
+                out var hit,
+                100f,
+                LayerMask.GetMask("Ground")))
+            {
+                Debug.Log("AAA");
+
+                transform.localPosition = new Vector3(
+                    transform.localPosition.x,
+                    hit.point.y,
+                    transform.localPosition.z);
+            }
+        }
+        else
+        {
+            transform.localRotation = cameraTr.localRotation;
         }
     }
 }

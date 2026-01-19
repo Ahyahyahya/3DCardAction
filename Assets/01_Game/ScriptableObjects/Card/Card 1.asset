@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardData
   dataName: Poison Shot
   id: 1
+  _effectType: 0
   _element: 5
   _effectCore: {fileID: 2134536044775632917, guid: 16f3b0ed9f8f0324fa17eeaf1c8776de, type: 3}
-  _atk: 5
   _cost: 2
+  _atk: 5
+  _castTime: 1
   _price: 100
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
+  _moveSpeed: 1
+  _damageCnt: 0
+  _damageInterval: 0

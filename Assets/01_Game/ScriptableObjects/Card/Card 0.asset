@@ -19,7 +19,10 @@ MonoBehaviour:
   _effectCore: {fileID: -7211427387830139265, guid: cff5cc08d8acaab47870386f1ee23a3a, type: 3}
   _cost: 1
   _atk: 10
+  _castTime: 0.5
   _price: 100
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
   _moveSpeed: 10
+  _damageCnt: 0
+  _damageInterval: 0

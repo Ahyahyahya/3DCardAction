@@ -21,6 +21,7 @@ public class CardEffectCore : MonoBehaviour
         switch (_cardData.EffectType)
         {
             case EffectType.Shot:
+            case EffectType.Front:
 
                 this.OnTriggerEnterAsObservable()
                 .Subscribe(colider =>
@@ -32,8 +33,6 @@ public class CardEffectCore : MonoBehaviour
                 })
                 .AddTo(this);
 
-                break;
-            case EffectType.Front:
                 break;
             case EffectType.Put:
                 break;
@@ -69,7 +68,7 @@ public class CardEffectCore : MonoBehaviour
 
                         if (runCnt >= _cardData.DamageCnt)
                         {
-                            Destroy(gameObject);   
+                            Destroy(gameObject);
                         }
                     })
                     .AddTo(this);
@@ -79,24 +78,5 @@ public class CardEffectCore : MonoBehaviour
                 break;
 
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        var laser = GetComponent<MLaser>();
-
-        var isHit = Physics.SphereCast(
-            transform.position,
-            3f,
-            transform.forward * laser.CurrentLaserDist.CurrentValue,
-            out var hit);
-
-        Gizmos.DrawRay(
-            transform.position,
-            transform.forward * laser.CurrentLaserDist.CurrentValue);
-
-        Gizmos.DrawWireSphere(
-            transform.position + transform.forward * laser.CurrentLaserDist.CurrentValue,
-            3f);
     }
 }
