@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa37c9da2c9d944c8808ac98e9dde41, type: 3}
+  m_Name: Event 9
+  m_EditorClassIdentifier: Assembly-CSharp::EventData
+  dataName: "\u5929\u79E4"
+  id: 0
+  _eventSprite: {fileID: 0}
+  _eventText: "\u90E8\u5C4B\u306E\u4E2D\u306B\u5165\u308B\u3068\u3001\u90E8\u5C4B\u306E\u4E2D\u592E\u306E\u53F0\u5EA7\u306E\u5929\u79E4\u304C\u76EE\u306B\u5165\u3063\u305F\u3002\u7247\u65B9\u306B\u306F\u30CF\u30FC\u30C8\u304C\u7F6E\u3044\u3066\u3042\u308A\u3001\u3082\u3046\u7247\u65B9\u306B\u306F\u8CA1\u5B9D\u304C\u7F6E\u3044\u3066\u3042\u308B\u3002"
+  _buttonEventsList:
+  - list:
+    - {fileID: 0}
+    _eventDescription: "\u30CF\u30FC\u30C8\u3092\u53D6\u308B(HP50%\u56DE\u5FA9\u3001\u304A\u91D1\u309250%\u5931\u3046)"
+  - list:
+    - {fileID: 0}
+    _eventDescription: "\u8CA1\u5B9D\u3092\u53D6\u308B(\u304A\u91D1\u3092500\u5F97\u308B\u3001HP\u309250%\u5931\u3046)"
