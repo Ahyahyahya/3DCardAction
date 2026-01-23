@@ -51,6 +51,7 @@ public class PlayerCore : MonoBehaviour, IDamageble
     }
     public void PlusMoney(int value) => _money.Value += value;
     public void MinusMoney(int value) => _money.Value -= value;
+    public void TakeHeal(int value) => _hp.Value += value;
 
     // ---------- Interface
     public void TakeDamage(int damage, Element element)

@@ -30,6 +30,7 @@ public class PlayerDataProvider : MonoBehaviour
     public void AddActivateCnt(int value) => _cardHolder.AddActivateCnt(value);
     public void PlusMoney(int value) => _core.PlusMoney(value);
     public void MinusMoney(int value) => _core.MinusMoney(value);
+    public void TakeHeal(int value) => _core.TakeHeal(value);
 
     // ---------- UnityMessage
     private void Awake()

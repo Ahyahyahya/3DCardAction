@@ -19,7 +19,7 @@ MonoBehaviour:
   _effectCore: {fileID: -4908624469727032070, guid: 666acefafec7d504a8a200d0f521e297, type: 3}
   _cost: 5
   _atk: 4
-  _castTime: 5
+  _castTime: 6
   _price: 100
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"

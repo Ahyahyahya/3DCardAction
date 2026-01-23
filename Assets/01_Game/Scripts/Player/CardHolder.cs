@@ -99,6 +99,7 @@ public class CardHolder : MonoBehaviour
 
         // 発動するカードを選ぶ処理
         inputer.MouseMidBtn
+            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
             .ThrottleFirst(TimeSpan.FromSeconds(0.5f))
             .Subscribe(input =>
             {

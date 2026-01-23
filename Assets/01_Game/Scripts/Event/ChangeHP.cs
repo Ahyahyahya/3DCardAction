@@ -7,7 +7,7 @@ public class ChangeHP : BaseEvent
     public int Amount => _amount;
     public override void Execute()
     {
-        throw new System.NotImplementedException();
+        PlayerDataProvider.Instance.TakeHeal(_amount);
     }
 
 }
