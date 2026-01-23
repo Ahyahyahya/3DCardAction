@@ -112,6 +112,7 @@ public class SelectPresenter : BasePresenter
                         _gameManager.ChangeGameState(GameState.BATTLE);
                         break;
                     case NodeType.Event:
+                        _gameManager.ChangeGameState(GameState.EVENT);
                         break;
                     case NodeType.Tresure:
                         break;

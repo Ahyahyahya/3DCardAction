@@ -17,7 +17,7 @@ MonoBehaviour:
   _effectType: 0
   _element: 2
   _effectCore: {fileID: 5062883305364465056, guid: 2488f4d66ebe8ba45875acf569524642, type: 3}
-  _cost: 3
+  _cost: 2
   _atk: 10
   _castTime: 1
   _price: 100

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d515576eeeb6db748a9db403461f9f06, type: 3}
   m_Name: MinusMoney500
   m_EditorClassIdentifier: Assembly-CSharp::ChangeMoney
-  _amount: 500
+  _amount: -500

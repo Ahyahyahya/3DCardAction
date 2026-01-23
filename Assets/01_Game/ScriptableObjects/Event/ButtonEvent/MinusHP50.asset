@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b0ef54e465a4c4887da8d807e26f94, type: 3}
   m_Name: MinusHP50
   m_EditorClassIdentifier: Assembly-CSharp::ChangeHP
-  _amount: 50
+  _amount: -50
