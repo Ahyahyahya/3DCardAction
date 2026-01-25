@@ -2,29 +2,21 @@ using R3;
 using R3.Triggers;
 using UnityEngine;
 
-public class EnemyNormalMove : MonoBehaviour
+[RequireComponent(typeof(EnemyCore))]
+public class EnemyNormalMove : BaseEnemyMove
 {
-    [SerializeField] private EnemyCore _core;
-    [SerializeField] private int _atk = 10;
-    [SerializeField] private Element _attackElement;
-    [SerializeField] private float _moveSpeed = 3f;
-
-    private void Start()
+    protected override void Movement()
     {
-        var playerTr = PlayerDataProvider.Instance.transform;
-
-        var gm = GameManager.Instance;
-
         this.UpdateAsObservable()
-            .Where(_ => _core.CanMove.CurrentValue)
-            .Where(_ => gm.State.CurrentValue == GameState.BATTLE)
+            .Where(_ => enemyCore.CanMove.CurrentValue)
+            .Where(_ => gameManager.State.CurrentValue == GameState.BATTLE)
             .Subscribe(_ =>
             {
                 // ÉvÉåÉCÉÑÅ[Çí«Ç§
                 transform.localPosition = Vector3.MoveTowards(
-                    transform.localPosition,
-                    playerTr.transform.localPosition,
-                    _moveSpeed * Time.deltaTime);
+                    transform.position,
+                    playerTransform.position,
+                    enemyCore.EnemyData.MoveSpeed * Time.deltaTime);
             });
 
         this.OnCollisionEnterAsObservable()
@@ -32,7 +24,9 @@ public class EnemyNormalMove : MonoBehaviour
             {
                 if (collision.gameObject.TryGetComponent<IDamageble>(out var damageble))
                 {
-                    damageble.TakeDamage(_atk, _attackElement);
+                    damageble.TakeDamage(
+                        enemyCore.EnemyData.Atk,
+                        enemyCore.EnemyData.AttackElement);
                 }
             })
             .AddTo(this.gameObject);

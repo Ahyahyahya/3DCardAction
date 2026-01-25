@@ -78,4 +78,11 @@ public class CardData : BaseData
 
         core.Effect.ActivateCardEffect();
     }
+
+    public void Activate(Transform tr)
+    {
+        var core = Instantiate(_effectCore, Vector3.zero, Quaternion.identity);
+
+        core.Effect.ActivateCardEffect(tr);
+    }
 }
