@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdf950cb45816f442bc87ad296f0a84b, type: 3}
-  m_Name: 00_EnemyData
+  m_Name: Enemy 3
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   dataName: 
-  id: 0
-  _enemyPrefab: {fileID: 6764976733887052602, guid: 1a4009523cdbe9e42baf78bba5bf6b34, type: 3}
-  _maxHp: 50
-  _atk: 10
+  id: 3
+  _enemyPrefab: {fileID: 8163315046425186434, guid: 6a1b3e501e6d3fe42ae9bfeee0e1b790, type: 3}
+  _maxHp: 450
+  _atk: 100
+  _attackElement: 0
+  _moveSpeed: 1

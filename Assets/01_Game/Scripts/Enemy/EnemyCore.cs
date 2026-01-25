@@ -3,6 +3,7 @@ using R3.Triggers;
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class EnemyCore : MonoBehaviour, IDamageble
 {
     // ---------- Field
