@@ -19,4 +19,9 @@ public class BaseDataStore<T, U> : MonoBehaviour where T : BaseDataBase<U> where
     {
         return dataBase.DataList.Find(e => e.Id == id);
     }
+
+    public U FindWithIndex(int index)
+    {
+        return dataBase.DataList[index];
+    }
 }

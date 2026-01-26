@@ -50,7 +50,7 @@ public class GamePresenter : BasePresenter
             .ObserveReplace()
             .Subscribe(data =>
             {
-                _cards[data.Index].SetCardData(cardDataStore.FindWithId(data.NewValue));
+                _cards[data.Index].SetCardData(cardDataStore.FindWithIndex(data.NewValue));
             })
             .AddTo(this);
 
@@ -100,7 +100,7 @@ public class GamePresenter : BasePresenter
             {
                 var targetCardId = playerDatas.Hand[playerDatas.CurCardNum.CurrentValue];
 
-                var targetCard = cardDataStore.FindWithId(targetCardId);
+                var targetCard = cardDataStore.FindWithIndex(targetCardId);
 
                 _cardNameTMP.text = targetCard.DataName;
 

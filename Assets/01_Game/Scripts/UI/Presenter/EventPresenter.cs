@@ -21,7 +21,7 @@ public class EventPresenter : BasePresenter
 
                 var targetEventID = Random.Range(0, eventDataStore.GetCount);
 
-                var targetEventData = eventDataStore.FindWithId(targetEventID);
+                var targetEventData = eventDataStore.FindWithIndex(targetEventID);
 
                 _eventView.SetEventData(targetEventData);
 

@@ -23,6 +23,6 @@ MonoBehaviour:
   _price: 100
   _sprite: {fileID: 0}
   _description: "\u6575\u306E\u653B\u6483"
-  _moveSpeed: 1
+  _moveSpeed: 5
   _damageCnt: 20
   _damageInterval: 0.25

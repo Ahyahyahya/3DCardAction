@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using R3;
 using R3.Triggers;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -68,6 +69,16 @@ public class ShotCardEffect : BaseCardEffect
             })
             .AddTo(gameObject);
 
-        Destroy(gameObject, 3f);
+        this.UpdateAsObservable()
+            .ThrottleLast(TimeSpan.FromSeconds(core.CardData.LifeTime))
+            .Subscribe(_ =>
+            {
+                Instantiate(
+                        _hit,
+                        transform.localPosition,
+                        transform.localRotation);
+
+                Destroy(gameObject);
+            });
     }
 }

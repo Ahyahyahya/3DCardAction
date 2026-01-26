@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
         {
             var enemyId = Random.Range(0, enemyDataStore.GetCount);
 
-            var targetEnemy = enemyDataStore.FindWithId(enemyId).EnemyPrefab;
+            var targetEnemy = enemyDataStore.FindWithIndex(enemyId).EnemyPrefab;
 
             var clone = Instantiate(
                 targetEnemy,

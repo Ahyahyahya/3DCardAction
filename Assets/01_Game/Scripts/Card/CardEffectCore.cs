@@ -35,6 +35,20 @@ public class CardEffectCore : MonoBehaviour
 
                 break;
             case EffectType.Put:
+
+                this.OnTriggerStayAsObservable()
+                    .ThrottleFirst(TimeSpan.FromSeconds(_cardData.DamageInterval))
+                    .Subscribe(collider =>
+                    {
+                        if (collider.TryGetComponent<IDamageble>(out var damageble))
+                        {
+                            damageble.TakeDamage(_cardData.Atk, _cardData.Element);
+                        }
+                    })
+                    .AddTo(this);
+
+                Destroy(gameObject, _cardData.DamageInterval * _cardData.DamageCnt);
+
                 break;
             case EffectType.Laser:
 
