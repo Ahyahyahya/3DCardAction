@@ -28,6 +28,8 @@ public class CardHolder : MonoBehaviour
 
     private int _activateCnt = 1;
 
+    private bool _isNoCast = false;
+
     private ReactiveProperty<bool> _isCasting = new();
     public ReadOnlyReactiveProperty<bool> IsCasting => _isCasting;
 
@@ -296,11 +298,13 @@ public class CardHolder : MonoBehaviour
                 {
                     _curCastTime.Value += Time.deltaTime;
 
-                    if (_curCastTime.Value >= _cardDataStore.FindWithIndex(_hand[_curCardNum.Value]).CastTime)
+                    if (_curCastTime.Value >= _cardDataStore.FindWithIndex(_hand[_curCardNum.Value]).CastTime || _isNoCast)
                     {
-                        PlayCard(_curCardNum.Value);
-
                         _isCastSuccess.Value = true;
+
+                        _isNoCast = false;
+
+                        PlayCard(_curCardNum.Value);
                     }
                 }
             }
@@ -318,5 +322,10 @@ public class CardHolder : MonoBehaviour
     public void AddActivateCnt(int value)
     {
         _activateCnt += value;
+    }
+
+    public void SetNoCast()
+    {
+        _isNoCast = true;
     }
 }

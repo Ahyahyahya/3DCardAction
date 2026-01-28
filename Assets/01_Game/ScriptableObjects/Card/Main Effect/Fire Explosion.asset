@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
-  m_Name: Card 5
+  m_Name: Fire Explosion
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: Magic Sword Beam
-  id: 5
+  dataName: FireExplosion
+  id: 14
   _effectType: 0
-  _element: 0
-  _effectCore: {fileID: 3331367163008802902, guid: 16431f649b207124ab5dd0c6ec77dea0, type: 3}
-  _cost: 1
-  _atk: 10
-  _castTime: 0.25
+  _element: 1
+  _effectCore: {fileID: 339954354646083348, guid: 280df2e98b67b8842b01d9a424adbd8f, type: 3}
+  _cost: 5
+  _atk: 0
+  _castTime: 3
   _price: 100
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
-  _moveSpeed: 100
-  _damageCnt: 0
-  _damageInterval: 0
+  _moveSpeed: 1
+  _lifeTime: 5
+  _damageCnt: 20
+  _damageInterval: 0.25

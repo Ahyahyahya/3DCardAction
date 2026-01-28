@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86921a5731963eb439626a380df15b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardEffectCore
-  _cardData: {fileID: 11400000, guid: 5220ac3234e2d01409c61bb6e3d8972f, type: 2}
+  _cardData: {fileID: 11400000, guid: 256e7e346a920e049be2cfc67dd4578e, type: 2}
   _effect: {fileID: 7034818870851690496}
 --- !u!114 &7034818870851690496
 MonoBehaviour:

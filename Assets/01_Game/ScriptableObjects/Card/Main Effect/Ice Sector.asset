@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
-  m_Name: Card 1000
+  m_Name: Ice Sector
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: FireExplosion
-  id: 0
-  _effectType: 0
-  _element: 1
-  _effectCore: {fileID: 555971892901966409, guid: a661a35d7253c2343b79b769eb8806d0, type: 3}
-  _cost: 0
-  _atk: 1000
-  _castTime: 5
+  dataName: IceSector
+  id: 12
+  _effectType: 1
+  _element: 2
+  _effectCore: {fileID: 4775348570027240338, guid: 8383e0135f5d59544976284bf4c7d477, type: 3}
+  _cost: 2
+  _atk: 400
+  _castTime: 1.5
   _price: 100
   _sprite: {fileID: 0}
-  _description: 
+  _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
   _moveSpeed: 1
+  _lifeTime: 3
   _damageCnt: 20
   _damageInterval: 0.25

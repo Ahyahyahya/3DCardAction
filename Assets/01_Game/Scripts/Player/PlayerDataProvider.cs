@@ -31,6 +31,7 @@ public class PlayerDataProvider : MonoBehaviour
     public void PlusMoney(int value) => _core.PlusMoney(value);
     public void MinusMoney(int value) => _core.MinusMoney(value);
     public void TakeHeal(int value) => _core.TakeHeal(value);
+    public void SetNoCast() => _cardHolder.SetNoCast();
 
     // ---------- UnityMessage
     private void Awake()

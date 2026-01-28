@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
-  m_Name: Card 7
+  m_Name: Extra Cast
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: Magic Laser
-  id: 7
-  _effectType: 3
+  dataName: Extra Cast
+  id: 0
+  _effectType: 4
   _element: 0
-  _effectCore: {fileID: 5325894232289654377, guid: 47b91a5a2eaa4b748bd062fb78a59430, type: 3}
-  _cost: 4
-  _atk: 4
-  _castTime: 3
+  _effectCore: {fileID: -2258314609068953575, guid: 934be294eb4e95f4c8ca9b92fd644bf2, type: 3}
+  _cost: 1
+  _atk: 0
+  _castTime: 0
   _price: 100
   _sprite: {fileID: 0}
-  _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
+  _description: 
   _moveSpeed: 1
-  _damageCnt: 20
-  _damageInterval: 0.1
+  _lifeTime: 3
+  _damageCnt: 0
+  _damageInterval: 0

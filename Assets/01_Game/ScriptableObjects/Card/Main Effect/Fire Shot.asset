@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87595d2bd45a3c34aa26ab77cdc845c7, type: 3}
-  m_Name: Card 8
+  m_Name: Fire Shot
   m_EditorClassIdentifier: Assembly-CSharp::CardData
-  dataName: FireLaser
-  id: 8
-  _effectType: 3
+  dataName: Fire Shot
+  id: 3
+  _effectType: 0
   _element: 1
-  _effectCore: {fileID: -4908624469727032070, guid: 666acefafec7d504a8a200d0f521e297, type: 3}
-  _cost: 5
-  _atk: 4
-  _castTime: 6
+  _effectCore: {fileID: -577422622638240065, guid: 822d9d16f4116c54c830821ef9bff0a1, type: 3}
+  _cost: 2
+  _atk: 500
+  _castTime: 1.5
   _price: 100
   _sprite: {fileID: 0}
   _description: "\u30C6\u30B9\u30C8\u30AB\u30FC\u30C9"
-  _moveSpeed: 1
-  _damageCnt: 20
-  _damageInterval: 0.1
+  _moveSpeed: 5
+  _lifeTime: 3
+  _damageCnt: 0
+  _damageInterval: 0

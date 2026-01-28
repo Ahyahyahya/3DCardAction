@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6332205538653545507, guid: ec6d8f455e5d3154694d57112ade8405, type: 3}
       propertyPath: m_Name
-      value: Par_HolyBuff Variant
+      value: Extra Cast Buff
       objectReference: {fileID: 0}
     - target: {fileID: 7023278335125586909, guid: ec6d8f455e5d3154694d57112ade8405, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59,6 +59,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6332205538653545507, guid: ec6d8f455e5d3154694d57112ade8405, type: 3}
       insertIndex: -1
       addedObject: {fileID: 884671752438329129}
+    - targetCorrespondingSourceObject: {fileID: 6332205538653545507, guid: ec6d8f455e5d3154694d57112ade8405, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2258314609068953575}
   m_SourcePrefab: {fileID: 100100000, guid: ec6d8f455e5d3154694d57112ade8405, type: 3}
 --- !u!1 &7893794520778811365 stripped
 GameObject:
@@ -79,3 +82,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SelfCardEffect
   _type: 0
   _amount: 1
+--- !u!114 &-2258314609068953575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7893794520778811365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86921a5731963eb439626a380df15b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardEffectCore
+  _cardData: {fileID: 11400000, guid: 89cf800f6c5270044b36f2e2b5e353ea, type: 2}
+  _effect: {fileID: 884671752438329129}
