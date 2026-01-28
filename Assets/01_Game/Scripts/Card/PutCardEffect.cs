@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PutCardEffect : BaseCardEffect
 {
-    [SerializeField] private float _lifeTime = 1.0f;
+    [SerializeField] private float _range = 20f;
     public override void ActivateCardEffect()
     {
         var camera = Camera.main;
@@ -19,14 +19,17 @@ public class PutCardEffect : BaseCardEffect
         if (Physics.Raycast(centerRay, out RaycastHit hit))
         {
             activatePos = hit.point;
+
+            Debug.Log("[PutCardEffect] Hit Anything");
         }
         else
         {
-            activatePos = camera.transform.localPosition;
+            activatePos =
+                camera.transform.position + camera.transform.forward * _range;
+
+            Debug.Log("[PutCardEffect] No Hit");
         }
 
         gameObject.transform.localPosition = activatePos;
-
-        Destroy(gameObject, _lifeTime);
     }
 }

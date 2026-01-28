@@ -56,7 +56,10 @@ public class CardData : BaseData
     #region Shot Field
     [Header("Shot Field")]
     [SerializeField] private float _moveSpeed = 1.0f;
+
+    [SerializeField] private float _lifeTime = 3.0f;
     public float MoveSpeed => _moveSpeed;
+    public float LifeTime => _lifeTime;
     #endregion
 
     #region Put & Laser

@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 249268224334920840, guid: 57c3aac5eb5958142902152563f79b57, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3476201108509148562, guid: 57c3aac5eb5958142902152563f79b57, type: 3}
       propertyPath: m_Name
-      value: Par_CosmoShootHit
+      value: EnemyShot_Hit
       objectReference: {fileID: 0}
     - target: {fileID: 8925156842536184774, guid: 57c3aac5eb5958142902152563f79b57, type: 3}
       propertyPath: m_LocalPosition.x

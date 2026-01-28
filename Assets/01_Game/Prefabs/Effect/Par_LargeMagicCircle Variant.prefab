@@ -9821,7 +9821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fba79d34cc57d64b8a17d3af5bb8d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PutCardEffect
-  _lifeTime: 5
+  _range: 20
 --- !u!136 &805483674400543465
 CapsuleCollider:
   m_ObjectHideFlags: 0

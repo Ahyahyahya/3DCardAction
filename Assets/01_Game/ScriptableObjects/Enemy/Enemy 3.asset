@@ -15,7 +15,7 @@ MonoBehaviour:
   dataName: 
   id: 3
   _enemyPrefab: {fileID: 8163315046425186434, guid: 6a1b3e501e6d3fe42ae9bfeee0e1b790, type: 3}
-  _maxHp: 450
+  _maxHp: 1200
   _atk: 100
   _attackElement: 0
   _moveSpeed: 1

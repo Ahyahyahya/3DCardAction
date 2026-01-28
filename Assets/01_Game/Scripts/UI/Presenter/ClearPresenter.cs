@@ -26,7 +26,7 @@ public class ClearPresenter : BasePresenter
             .ObserveReplace()
             .Subscribe(data =>
             {
-                cardViews[data.Index].SetCardData(cardDataStore.FindWithId(data.NewValue));
+                cardViews[data.Index].SetCardData(cardDataStore.FindWithIndex(data.NewValue));
             })
             .AddTo(this);
 
@@ -37,7 +37,7 @@ public class ClearPresenter : BasePresenter
             btn.OnButtonClicked
                 .Subscribe(_ =>
                 {
-                    var targetCardData = cardDataStore.FindWithId(
+                    var targetCardData = cardDataStore.FindWithIndex(
                         playerData.NewCards[_cards.IndexOf(btn.gameObject)]);
 
                     playerData.AddCardIntoDeck(targetCardData.Id);

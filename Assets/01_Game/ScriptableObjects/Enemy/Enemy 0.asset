@@ -15,7 +15,7 @@ MonoBehaviour:
   dataName: Slime
   id: 0
   _enemyPrefab: {fileID: 1747578394491122501, guid: 36697c1423647f6418382da5b11a6987, type: 3}
-  _maxHp: 600
+  _maxHp: 2400
   _atk: 100
   _attackElement: 0
   _moveSpeed: 1

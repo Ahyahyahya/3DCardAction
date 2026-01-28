@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2905047480512724534, guid: b07103c6f882afa45930906b229ce8eb, type: 3}
       propertyPath: m_Name
-      value: Par_CosmoShootMuzzle
+      value: EnemyShot_Muzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3653707123821506603, guid: b07103c6f882afa45930906b229ce8eb, type: 3}
+      propertyPath: stopAction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5888901040226445078, guid: b07103c6f882afa45930906b229ce8eb, type: 3}
       propertyPath: m_LocalPosition.x

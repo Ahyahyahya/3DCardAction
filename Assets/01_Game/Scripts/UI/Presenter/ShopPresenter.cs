@@ -30,7 +30,7 @@ public class ShopPresenter : BasePresenter
             {
                 _cards[data.Index].SetActive(true);
 
-                cardViews[data.Index].SetCardData(cardDataStore.FindWithId(data.NewValue));
+                cardViews[data.Index].SetCardData(cardDataStore.FindWithIndex(data.NewValue));
             })
             .AddTo(this);
 
@@ -41,7 +41,7 @@ public class ShopPresenter : BasePresenter
             btn.OnButtonClicked
                 .Subscribe(_ =>
                 {
-                    var targetCardData = cardDataStore.FindWithId(
+                    var targetCardData = cardDataStore.FindWithIndex(
                         _shopManager.ShopCards[_cards.IndexOf(btn.gameObject)]);
 
                     if (playerData.Money.CurrentValue < targetCardData.Price) return;

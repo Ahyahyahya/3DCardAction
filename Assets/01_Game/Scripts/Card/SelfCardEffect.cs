@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum BuffType
 {
-    AddActivateCnt
+    AddActivateCnt,
+    NoCast
 }
 
 public class SelfCardEffect : BaseCardEffect
@@ -21,6 +22,9 @@ public class SelfCardEffect : BaseCardEffect
         {
             case BuffType.AddActivateCnt:
                 playerData.AddActivateCnt(_amount);
+                break;
+            case BuffType.NoCast:
+                playerData.SetNoCast();
                 break;
         }
         Destroy(gameObject, 3f);
