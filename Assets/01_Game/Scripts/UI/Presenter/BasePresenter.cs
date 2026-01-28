@@ -5,11 +5,14 @@ public abstract class BasePresenter : MonoBehaviour
 {
     // ---------- Field
     [SerializeField] private GameState _targetGameState;
+    [SerializeField] private bool _isAlways;
 
     // ---------- UnityMessage
     protected virtual void Start()
     {
         var gm = GameManager.Instance;
+
+        if (_isAlways) return;
 
         // 対象のゲームステートの時のみUIを表示する
         gm.State
